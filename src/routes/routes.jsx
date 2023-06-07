@@ -24,19 +24,19 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/",
+        path: "/login",
         element: <Login />,
       },
       {
-        path: "/",
+        path: "/register",
         element: <Register />,
       },
       {
-        path: "/",
+        path: "/instructors",
         element: <Instructors />,
       },
       {
-        path: "/",
+        path: "/classes",
         element: <Classes />,
       },
     ],
