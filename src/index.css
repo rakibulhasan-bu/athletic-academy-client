@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.active {
+  @apply border-b-2 border-primary font-medium text-secondary md:text-primary;
+}
+
 .btn {
   background: linear-gradient(120deg, rgb(0, 35, 88), crimson, orange);
   background-size: 200% 100%;
