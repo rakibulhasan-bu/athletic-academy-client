@@ -12,7 +12,7 @@ const Navbar = () => {
   };
   return (
     <div className="fixed z-10 w-full border-b-[1px] bg-white shadow-sm">
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container mx-auto flex items-center justify-between py-1">
         {/* these is logo  */}
         <div className="h-14 w-36">
           <NavLink to="/">
@@ -28,11 +28,11 @@ const Navbar = () => {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/instructors">Instructors</NavLink>
           <NavLink to="/classes">Classes</NavLink>
-          <NavLink to="/dashboard">Dashboard</NavLink>
 
           <div className="">
             {user && user ? (
               <div className="flex items-center gap-x-8">
+                <NavLink to="/dashboard">Dashboard</NavLink>
                 <NavLink onClick={handleLogOut} to="/login">
                   Log out
                 </NavLink>
