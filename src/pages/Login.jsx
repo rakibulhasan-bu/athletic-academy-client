@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ImSpinner9 } from "react-icons/im";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -13,10 +13,10 @@ const Login = () => {
     signInWithGoogle,
     signIn,
     setUser,
-    resetPassword,
+    // resetPassword,
     setLoading,
   } = useContext(AuthContext);
-  const emailRef = useRef();
+  // const emailRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -34,6 +34,7 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
         error &&
           Swal.fire({
@@ -70,38 +71,38 @@ const Login = () => {
       });
   };
   //   handle password reset
-  const handleResetPass = () => {
-    const email = emailRef.current.value;
-    if (email) {
-      resetPassword(email)
-        .then(() => {
-          Swal.fire(
-            "Send Link successful!",
-            "Please check your email for reset link",
-            "success"
-          );
-          setLoading(false);
-        })
-        .catch((err) => {
-          setLoading(false);
-          console.log(err.message);
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: `${err.message}`,
-          });
-        });
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: `Please Provide Your valid email for Reset password`,
-      });
-    }
-  };
+  // const handleResetPass = () => {
+  //   const email = emailRef.current.value;
+  //   if (email) {
+  //     resetPassword(email)
+  //       .then(() => {
+  //         Swal.fire(
+  //           "Send Link successful!",
+  //           "Please check your email for reset link",
+  //           "success"
+  //         );
+  //         setLoading(false);
+  //       })
+  //       .catch((err) => {
+  //         setLoading(false);
+  //         console.log(err.message);
+  //         Swal.fire({
+  //           icon: "error",
+  //           title: "Oops...",
+  //           text: `${err.message}`,
+  //         });
+  //       });
+  //   } else {
+  //     Swal.fire({
+  //       icon: "error",
+  //       title: "Oops...",
+  //       text: `Please Provide Your valid email for Reset password`,
+  //     });
+  //   }
+  // };
   return (
     <div className="flex items-center justify-center py-20 md:min-h-screen md:py-0">
-      <div className="mx-4 flex w-full flex-col rounded-lg bg-green-50 p-6 text-gray-900 shadow-md sm:p-10 md:mx-0 md:w-1/3">
+      <div className="mx-4 flex w-full flex-col rounded-lg bg-green-50 p-6 text-gray-900 shadow-md sm:p-10 md:mx-0 md:my-28 md:w-1/3">
         <h1 className="mb-2 text-center text-4xl font-bold">Welcome Back </h1>
         <p className="px-3 text-center text-sm text-gray-400">
           Login to your account with Goggle
@@ -149,7 +150,7 @@ const Login = () => {
           <div className="space-y-4">
             <input
               {...register("email")}
-              ref={emailRef}
+              // ref={emailRef}
               type="email"
               required
               placeholder="Please enter your Email"
@@ -189,7 +190,7 @@ const Login = () => {
         </form>
         <div className="flex justify-end space-y-1 pt-1">
           <button
-            onClick={handleResetPass}
+            // onClick={handleResetPass}
             className=" text-sm text-gray-600 hover:text-primary hover:underline"
           >
             Forgot password?
