@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { CgMenuRight } from "react-icons/cg";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 const Navbar = () => {
+  const [sticky, setSticky] = useState(false);
   const { user, logOut, setMobileNav } = useContext(AuthContext);
   const { displayName, photoURL } = user || {};
   const handleLogOut = () => {
@@ -10,8 +11,20 @@ const Navbar = () => {
       .then((result) => console.log(result))
       .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setSticky(window.scrollY > 200);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <div className="fixed z-10 w-full border-b-[1px] bg-white shadow-sm">
+    <div
+      className={`fixed z-10 w-full ${`${
+        sticky ? "border-b-[1px] bg-white shadow-md" : "bg-transparent"
+      }`}`}
+    >
       <div className="container mx-auto flex items-center justify-between py-1">
         {/* these is logo  */}
         <div className="h-14 w-36">

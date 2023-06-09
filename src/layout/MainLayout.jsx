@@ -10,7 +10,6 @@ const MainLayout = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-[64px]"></div>
       {/* mobile nav here  */}
       <div
         className={`${
@@ -20,6 +19,7 @@ const MainLayout = () => {
         <NavMobile />
       </div>
       <Outlet />
+      {/* <div className="min-h-[464px]"></div> */}
       <Footer />
       <ScrollRestoration />
     </>
