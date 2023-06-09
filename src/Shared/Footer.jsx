@@ -2,16 +2,16 @@ import { Link, NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-100">
+    <footer className="bg-grey-100">
       <div className="container mx-auto px-4 pt-8 sm:px-6 lg:px-8">
         {/* this is upper part of footer  */}
         <div className="flex flex-col gap-x-8 lg:flex-row">
           <div className="w-full lg:w-5/12">
             <NavLink to="/">
               <img
-                className="h-20 w-full object-cover lg:-ml-20"
-                src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1684397704/Website-assets/Toy%20Galaxy/logo_ymxuub.png"
-                alt="This is logo image"
+                className="h-28 w-4/6 object-fill"
+                src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1686132535/Website-assets/Athletic%20Academy/Athletic_logo_jlsoaw.png"
+                alt="logo"
               />
             </NavLink>
 
@@ -42,7 +42,7 @@ const Footer = () => {
                   to="https://www.facebook.com/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-cyan-700 transition hover:text-cyan-700/50"
+                  className="text-gray-500 transition hover:text-gray-800"
                 >
                   <span className="sr-only">Facebook</span>
                   <svg
@@ -65,7 +65,7 @@ const Footer = () => {
                   to="https://www.instagram.com/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-cyan-700 transition hover:text-cyan-700/50"
+                  className="text-gray-500 transition hover:text-gray-800"
                 >
                   <span className="sr-only">Instagram</span>
                   <svg
@@ -88,7 +88,7 @@ const Footer = () => {
                   to="https://twitter.com/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-cyan-700 transition hover:text-cyan-700/50"
+                  className="text-gray-500 transition hover:text-gray-800"
                 >
                   <span className="sr-only">Twitter</span>
                   <svg
@@ -107,7 +107,7 @@ const Footer = () => {
                   to="https://www.youtube.com/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-cyan-700 transition hover:text-cyan-700/50"
+                  className="text-gray-500 transition hover:text-gray-800"
                 >
                   <span className="sr-only">youtube</span>
                   <svg
@@ -169,35 +169,34 @@ const Footer = () => {
                   <li>
                     <Link
                       className="text-gray-700 transition hover:text-gray-700/75"
-                      to="/blogs"
+                      to="/login"
                     >
-                      Blogs
+                      Log in
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="text-gray-700 transition hover:text-gray-700/75"
+                      to="/"
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="text-gray-700 transition hover:text-gray-700/75"
+                      to="/instructors"
+                    >
+                      Instructors
                     </Link>
                   </li>
 
                   <li>
                     <Link
                       className="text-gray-700 transition hover:text-gray-700/75"
-                      to="/allToys"
+                      to="/classes"
                     >
-                      All Toys
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link
-                      className="text-gray-700 transition hover:text-gray-700/75"
-                      to="/addAToy"
-                    >
-                      Add A Toy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="text-gray-700 transition hover:text-gray-700/75"
-                      to="/myToys"
-                    >
-                      My Toys
+                      Classes
                     </Link>
                   </li>
                 </ul>

@@ -11,6 +11,7 @@
   background-size: 200% 100%;
   background-position: 100% 0;
   transition: background-position 0.5s;
+  border-radius: 8px;
 }
 
 .btn:hover {

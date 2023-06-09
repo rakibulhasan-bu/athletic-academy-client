@@ -32,7 +32,7 @@ const Navbar = () => {
             <img
               className="h-full w-full object-cover"
               src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1686132535/Website-assets/Athletic%20Academy/Athletic_logo_jlsoaw.png"
-              alt=""
+              alt="logo"
             />
           </NavLink>
         </div>
