@@ -12,7 +12,6 @@ const Login = () => {
     loading,
     signInWithGoogle,
     signIn,
-    setUser,
     // resetPassword,
     setLoading,
   } = useContext(AuthContext);
@@ -25,13 +24,27 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        Swal.fire(
-          `Welcome ${user?.displayName} to Athletic Academy`,
-          "Successfully logged in!",
-          "success"
-        );
-        setUser(user);
-        navigate(from, { replace: true });
+        const userData = {
+          name: user?.displayName,
+          email: user?.email,
+          imgURL: user?.photoURL,
+        };
+        fetch(`${import.meta.env.VITE_API_URL}/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            Swal.fire(
+              `Welcome ${user?.displayName} to Athletic Academy`,
+              "Successfully logged in!",
+              "success"
+            );
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => {
         setLoading(false);
@@ -50,10 +63,9 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         reset();
-        setUser(loggedUser);
         Swal.fire(
           "Login successful!",
-          `Welcome back, ${result.user?.displayName}!`,
+          `Welcome back, ${loggedUser?.displayName}!`,
           "success"
         );
         navigate(from, { replace: true });

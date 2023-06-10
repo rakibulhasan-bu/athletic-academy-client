@@ -146,7 +146,9 @@ const DashboardLayout = () => {
       </div>
 
       {/* these is right side  */}
-      <Outlet />
+      <div className="w-4/5">
+        <Outlet />
+      </div>
     </div>
   );
 };

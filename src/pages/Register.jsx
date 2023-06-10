@@ -14,7 +14,6 @@ const Register = () => {
     createUser,
     updateUserProfile,
     setLoading,
-    setUser,
     signInWithGoogle,
   } = useContext(AuthContext);
   const url = `https://api.imgbb.com/1/upload?key=${
@@ -27,13 +26,27 @@ const Register = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
-        Swal.fire(
-          `Welcome ${user?.displayName} to Athletic Academy`,
-          "Successfully logged in!",
-          "success"
-        );
-        setUser(user);
-        navigate(from, { replace: true });
+        const userData = {
+          name: user?.displayName,
+          email: user?.email,
+          imgURL: user?.photoURL,
+        };
+        fetch(`${import.meta.env.VITE_API_URL}/users`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            Swal.fire(
+              `Welcome ${user?.displayName} to Athletic Academy`,
+              "Successfully logged in!",
+              "success"
+            );
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => {
         setLoading(false);
@@ -55,6 +68,7 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    const userName = data?.name;
     const formData = new FormData();
     formData.append("image", data.image[0]);
 
@@ -72,14 +86,30 @@ const Register = () => {
               .then(() => {
                 updateUserProfile(data?.name, imgURL)
                   .then(() => {
-                    reset();
-                    Swal.fire(
-                      `Welcome ${data?.name} to Athletic Academy`,
-                      "Successfully signed up!",
-                      "success"
-                    );
-                    // saveUser(result.user);
-                    navigate("/", { replace: true });
+                    const userData = {
+                      name: data?.name,
+                      email: data?.email,
+                      imgURL,
+                    };
+                    fetch(`${import.meta.env.VITE_API_URL}/users`, {
+                      method: "POST",
+                      headers: {
+                        "content-type": "application/json",
+                      },
+                      body: JSON.stringify(userData),
+                    })
+                      .then((res) => res.json())
+                      .then((data) => {
+                        if (data.insertedId) {
+                          reset();
+                          Swal.fire(
+                            `Welcome ${userName} to Athletic Academy`,
+                            "Successfully signed up!",
+                            "success"
+                          );
+                          navigate("/", { replace: true });
+                        }
+                      });
                   })
                   .catch((err) => {
                     setLoading(false);
