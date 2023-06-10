@@ -3,6 +3,8 @@ import {
   BsCreditCard2Back,
   BsFillGridFill,
   BsUiChecksGrid,
+  BsPersonVideo2,
+  BsFillPeopleFill,
 } from "react-icons/bs";
 import { MdOutlineClass } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
@@ -136,20 +138,20 @@ const DashboardLayout = () => {
           </li>
           <li>
             <NavLink
-              to="/"
+              to="/classes"
               className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
             >
-              <AiFillHome className="text-xl font-bold" />
-              <span className="ml-3 flex-1 whitespace-nowrap">Home</span>
+              <BsPersonVideo2 className="text-xl font-bold" />
+              <span className="ml-3 flex-1 whitespace-nowrap">Classes</span>
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/"
+              to="/instructors"
               className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
             >
-              <AiFillHome className="text-xl font-bold" />
-              <span className="ml-3 flex-1 whitespace-nowrap">Home</span>
+              <BsFillPeopleFill className="text-xl font-bold" />
+              <span className="ml-3 flex-1 whitespace-nowrap">Instructors</span>
             </NavLink>
           </li>
           <li>
