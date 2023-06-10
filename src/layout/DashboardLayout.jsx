@@ -15,8 +15,10 @@ import {
 
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import useAdmin from "../hooks/useAdmin";
 
 const DashboardLayout = () => {
+  const [isAdmin] = useAdmin();
   const { logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
@@ -28,24 +30,32 @@ const DashboardLayout = () => {
       <div className="h-screen w-1/5 overflow-y-auto bg-gray-50 px-6 py-10 text-lg dark:bg-gray-800">
         {/* these is links based on user admin and instractor  */}
         <ul className="space-y-2 font-medium">
-          {/* <li>
-              <a
-                href="#"
-                className="flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-200 dark:text-wpritext-primaryk:hover:bg-gray-700"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+          {isAdmin && (
+            <>
+              <li>
+                <NavLink
+                  to="/dashboard/manageClasses"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
                 >
-                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                </svg>
-                <span className="ml-3">Dashboard</span>
-              </a>
-            </li> */}
+                  <BsUiChecksGrid className="text-xl font-bold" />
+                  <span className="ml-3 flex-1 whitespace-nowrap">
+                    Manage Classes
+                  </span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/manageUsers"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                >
+                  <HiUserGroup className="text-xl font-bold" />
+                  <span className="ml-3 flex-1 whitespace-nowrap">
+                    Manage users
+                  </span>
+                </NavLink>
+              </li>
+            </>
+          )}
 
           <li>
             <NavLink
@@ -56,17 +66,7 @@ const DashboardLayout = () => {
               <span className="ml-3 flex-1 whitespace-nowrap">My Classes</span>
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/dashboard/manageClasses"
-              className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
-            >
-              <BsUiChecksGrid className="text-xl font-bold" />
-              <span className="ml-3 flex-1 whitespace-nowrap">
-                Manage Classes
-              </span>
-            </NavLink>
-          </li>
+
           <li>
             <NavLink
               to="/dashboard/addAClass"
@@ -77,17 +77,6 @@ const DashboardLayout = () => {
             </NavLink>
           </li>
 
-          <li>
-            <NavLink
-              to="/dashboard/manageUsers"
-              className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
-            >
-              <HiUserGroup className="text-xl font-bold" />
-              <span className="ml-3 flex-1 whitespace-nowrap">
-                Manage users
-              </span>
-            </NavLink>
-          </li>
           <li>
             <NavLink
               to="/dashboard/selectedClasses"

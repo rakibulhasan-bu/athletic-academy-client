@@ -95,7 +95,7 @@ const ManageUsers = () => {
                   className={`rounded-lg border ${
                     user?.role === "instructor"
                       ? "cursor-not-allowed border-gray-500  bg-gray-200 text-gray-500"
-                      : "border-primary hover:bg-primary hover:text-white"
+                      : "border-primary bg-primary text-white"
                   } px-2 py-1 font-medium`}
                 >
                   Make Instructor
@@ -105,7 +105,7 @@ const ManageUsers = () => {
                   className={`rounded-lg border ${
                     user?.role === "admin"
                       ? "cursor-not-allowed border-gray-500 bg-gray-200 text-gray-500"
-                      : "border-primary hover:bg-primary hover:text-white"
+                      : "border-primary bg-primary text-white"
                   } px-2 py-1 font-medium`}
                 >
                   Make Admin
