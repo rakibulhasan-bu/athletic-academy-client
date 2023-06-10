@@ -1,5 +1,7 @@
 const MyClasses = () => {
-  return <div>my classes added here</div>;
+  return (
+    <div className="mx-20 my-20 rounded-lg border border-primary px-8 py-6 shadow-md"></div>
+  );
 };
 
 export default MyClasses;
