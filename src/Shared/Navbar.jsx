@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { CgMenuRight } from "react-icons/cg";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
@@ -11,6 +11,7 @@ const Navbar = () => {
       .then((result) => console.log(result))
       .catch((error) => console.log(error));
   };
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,7 +23,11 @@ const Navbar = () => {
   return (
     <div
       className={`fixed z-10 w-full ${`${
-        sticky ? "border-b-[1px] bg-white shadow-md" : "bg-transparent"
+        sticky
+          ? "border-b-[1px] bg-white text-black shadow-md"
+          : `bg-transparent ${
+              location.pathname == "/" ? "text-white" : "text-black"
+            }`
       }`}`}
     >
       <div className="container mx-auto flex items-center justify-between py-1">
