@@ -15,6 +15,7 @@ import AddAClass from "../pages/dashboard/AddAClass";
 import MyClasses from "../pages/dashboard/MyClasses";
 import ManageClasses from "../pages/dashboard/ManageClasses";
 import Home from "../pages/Home/Home";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -46,7 +47,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard",
