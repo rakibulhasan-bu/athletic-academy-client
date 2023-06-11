@@ -14,7 +14,7 @@ const Instructors = () => {
     );
     return res.data;
   });
-  console.log(instructors);
+
   if (error) {
     Swal.fire({
       icon: "error",

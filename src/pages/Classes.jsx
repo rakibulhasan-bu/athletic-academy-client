@@ -4,7 +4,7 @@ import SingleClass from "../components/SingleClass";
 
 const Classes = () => {
   const [courses, setCourses] = useState([]);
-  console.log(courses);
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/allCourses`)
       .then((res) => res.json())

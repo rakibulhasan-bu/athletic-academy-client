@@ -59,35 +59,31 @@ const ManageClasses = () => {
       showLoaderOnConfirm: true,
 
       preConfirm: async (text) => {
-        // const res = await axiosSecure.put(
-        //   `/allClasses/admin/feedback/${SingleClasses._id}`,
-        //   text
-        // );
-
-        // const data = res.data;
-        // if (data.modifiedCount > 0) {
-        //   refetch();
-        //   Swal.fire(
-        //     "Successfully status changed!",
-        //     `${SingleClasses?.className} is deny!`,
-        //     "success"
-        //   );
-        // }
-
-        return axiosSecure
-          .put(`/allClasses/admin/feedback/${SingleClasses._id}`, text)
-          .then((res) => res.json())
-          .catch(() => {
-            Swal.showValidationMessage(`please input feedback`);
-          });
+        if (text.length >= 15) {
+          return text;
+        } else {
+          return Swal.showValidationMessage(
+            `please give at least 15 character feedback`
+          );
+        }
       },
       allowOutsideClick: () => !Swal.isLoading(),
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: `${result.value.login}'s avatar`,
-          imageUrl: result.value.avatar_url,
-        });
+        const body = result.value;
+        const res = await axiosSecure.put(
+          `/allClasses/admin/feedback/${SingleClasses._id}`,
+          { body }
+        );
+        const data = res.data;
+        if (data.modifiedCount > 0) {
+          refetch();
+          Swal.fire(
+            "Successfully Give feedback!",
+            `${SingleClasses?.className} feedback given!`,
+            "success"
+          );
+        }
       }
     });
   };
