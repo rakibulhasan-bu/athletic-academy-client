@@ -6,6 +6,30 @@
   @apply border-b-2 border-primary font-medium text-secondary md:text-primary;
 }
 
+@layer base {
+  /* .sliders {
+    @apply max-w-2xl bg-red-400;
+  }
+  .swiper-slide {
+    @apply rounded-lg bg-white p-8;
+  } */
+  /* .swiper-container {
+    @apply h-80 w-64;
+  } */
+}
+/* .swiper-container {
+  width: 240px;
+  height: 320px;
+}
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+} */
 .btn {
   background: linear-gradient(120deg, rgb(0, 35, 88), crimson, orange);
   background-size: 200% 100%;

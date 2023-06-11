@@ -1,14 +1,16 @@
 import PopularClasses from "./PopularClasses";
 import PopularInstructor from "./PopularInstructor";
+import Testimonial from "./Testimonial";
 import TopSlider from "./TopSlider";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <TopSlider />
       <PopularClasses />
       <PopularInstructor />
-    </div>
+      <Testimonial />
+    </>
   );
 };
 

@@ -1,11 +1,15 @@
+import ClassCard from "../../components/ClassCard";
 import useMyClasses from "../../hooks/useMyClasses";
 
 const MyClasses = () => {
   const [allClass, refetch] = useMyClasses();
   console.log(allClass);
   return (
-    <div className="mx-20 my-20 bg-red-500">
-      {allClass?.map((singleClass) => {
+    <div className="mx-20 my-20 flex bg-red-500">
+      {allClass?.map((singleClass) => (
+        <ClassCard key={singleClass._id} />
+      ))}
+      {/* {allClass?.map((singleClass) => {
         <div
           key={singleClass._id}
           className="mx-auto max-w-xs rounded-3xl bg-white shadow-lg hover:shadow-xl"
@@ -46,7 +50,7 @@ const MyClasses = () => {
             </a>
           </div>
         </div>;
-      })}
+      })} */}
     </div>
   );
 };

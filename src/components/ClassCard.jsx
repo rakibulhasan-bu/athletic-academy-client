@@ -1,7 +1,7 @@
-const ClassCard = ({ singleClass }) => {
-  console.log(singleClass);
+const ClassCard = ({ course }) => {
+  console.log(course);
   return (
-    <div className="mx-auto max-w-xs rounded-3xl bg-white shadow-lg hover:shadow-xl">
+    <div className="mx-auto max-w-xs rounded-3xl bg-orange-400 shadow-lg hover:shadow-xl">
       <div className="h-[236px] rounded-t-3xl">
         <img
           className="rounded-t-3xl"
