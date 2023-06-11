@@ -180,11 +180,7 @@ const ManageClasses = () => {
                 </button>
                 <button
                   onClick={() => handleFeedback(SingleClasses)}
-                  className={`rounded-lg text-xs ${
-                    SingleClasses?.status === "feedback"
-                      ? "cursor-not-allowed border-gray-500 bg-gray-200 text-gray-500"
-                      : "border-primary bg-primary text-white"
-                  } px-3 py-1.5 font-medium`}
+                  className={`rounded-lg border-primary bg-primary px-3 py-1.5 text-xs font-medium text-white`}
                 >
                   Feedback
                 </button>

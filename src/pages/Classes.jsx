@@ -1,25 +1,31 @@
-import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import SingleClass from "../components/SingleClass";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const Classes = () => {
-  const [courses, setCourses] = useState([]);
+  const {
+    data: courses = [],
+    refetch,
+    isLoading,
+    error,
+  } = useQuery(["allApprovedCourses"], async () => {
+    const res = await axios.get(
+      `${import.meta.env.VITE_API_URL}/allApprovedCourses`
+    );
+    return res.data;
+  });
+  if (isLoading) {
+    return "loading........";
+  }
+  if (error) {
+    return Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Your Request is not allowed",
+    });
+  }
 
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/allCourses`)
-      .then((res) => res.json())
-      .then((data) => {
-        setCourses(data);
-      })
-      .catch((error) => {
-        error &&
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Your Request is not allowed",
-          });
-      });
-  }, []);
   return (
     <div className="container mx-auto py-20">
       <h1 className="text-center text-3xl font-medium">
@@ -27,7 +33,7 @@ const Classes = () => {
       </h1>
       <div className="flex gap-12 pt-12">
         {courses?.map((course) => (
-          <SingleClass course={course} key={course._id} />
+          <SingleClass refetch={refetch} course={course} key={course._id} />
         ))}
       </div>
     </div>

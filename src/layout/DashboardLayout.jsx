@@ -52,6 +52,15 @@ const DashboardLayout = () => {
 
               <li>
                 <NavLink
+                  to="/dashboard/payment"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                >
+                  <BsCreditCard2Back className="text-xl font-bold" />
+                  <span className="ml-3 flex-1 whitespace-nowrap">Payment</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
                   to="/dashboard/enrolledClasses"
                   className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
                 >
@@ -59,15 +68,6 @@ const DashboardLayout = () => {
                   <span className="ml-3 flex-1 whitespace-nowrap">
                     Enrolled Classes
                   </span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/dashboard/payment"
-                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
-                >
-                  <BsCreditCard2Back className="text-xl font-bold" />
-                  <span className="ml-3 flex-1 whitespace-nowrap">Payment</span>
                 </NavLink>
               </li>
             </>

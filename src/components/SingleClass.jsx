@@ -6,25 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
 
-const SingleClass = ({ course }) => {
+const SingleClass = ({ course, refetch }) => {
   const { seats, price, instructorName, instructorEmail, imgURL, className } =
     course || {};
   const [axiosSecure] = useAxiosSecure();
-  const {
-    data: selectClass = [],
-    refetch,
-    isLoading,
-    error,
-  } = useQuery(["selectClass"], async () => {
-    const res = await axiosSecure.get("/selectClass");
-    return res.data;
-  });
-  console.log(se);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const handleSelectClass = (course) => {
+
+  const handleSelectClass = async (course) => {
     if (!user) {
       navigate("/login");
       Swal.fire({
@@ -33,7 +23,18 @@ const SingleClass = ({ course }) => {
         text: "Please login and then select class",
       });
     }
-    console.log(course._id);
+    const id = course._id;
+    const res = await axiosSecure.put(`/selectClass/${user.email}`, { id });
+
+    const data = res.data;
+    if (data.modifiedCount > 0) {
+      refetch();
+      Swal.fire(
+        "Successfully Select class!",
+        `${course?.className} course is Successfully selected`,
+        "success"
+      );
+    }
   };
   return (
     <div className="max-w-xs transform rounded-xl bg-gray-100 p-4 shadow-lg transition duration-500 hover:scale-105 hover:shadow-2xl">

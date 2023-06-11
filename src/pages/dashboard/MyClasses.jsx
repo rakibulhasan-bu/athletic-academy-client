@@ -53,7 +53,7 @@ const MyClasses = () => {
               <span className="font-medium">$ {singleClass?.price}</span>
             </td>
             <td className="px-6 py-3 text-center ">
-              <span className="font-medium">{singleClass?.Students}</span>
+              <span className="font-medium">{singleClass?.Students || 0}</span>
             </td>
             <td className="px-6 py-3 text-center ">{singleClass?.seats}</td>
             <td className="px-6 py-3 text-center ">{singleClass?.status}</td>
