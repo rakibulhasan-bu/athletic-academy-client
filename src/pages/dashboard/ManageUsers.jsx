@@ -15,43 +15,35 @@ const ManageUsers = () => {
     return res.data;
   });
 
-  const handleMakeAdmin = (user) => {
-    fetch(`${import.meta.env.VITE_API_URL}/users/admin/${user._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          refetch();
-          Swal.fire(
-            "Successfully role changed!",
-            `${user?.name} is an Admin Now!`,
-            "success"
-          );
-        }
-      });
+  const handleMakeAdmin = async (user) => {
+    const res = await axiosSecure.patch(`/users/admin/${user._id}`);
+    const data = res.data;
+    if (data.modifiedCount > 0) {
+      refetch();
+      Swal.fire(
+        "Successfully role changed!",
+        `${user?.name} is an Admin Now!`,
+        "success"
+      );
+    }
   };
-  const handleMakeInstructor = (user) => {
-    fetch(`${import.meta.env.VITE_API_URL}/users/instructor/${user._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          refetch();
-          Swal.fire(
-            "Successfully role changed!",
-            `${user?.name} is an Instructor Now!`,
-            "success"
-          );
-        }
-      });
+  const handleMakeInstructor = async (user) => {
+    const res = await axiosSecure.patch(`/users/instructor/${user._id}`);
+    const data = res.data;
+    if (data.modifiedCount > 0) {
+      refetch();
+      Swal.fire(
+        "Successfully role changed!",
+        `${user?.name} is an Instructor Now!`,
+        "success"
+      );
+    }
   };
 
   const cols = [
     { label: "Name", value: "Name" },
     { label: "Email", value: "Email" },
-    { label: "User Status", value: "Status" },
+    { label: "Status", value: "Status" },
     { label: "Actions", value: "Actions" },
   ];
 

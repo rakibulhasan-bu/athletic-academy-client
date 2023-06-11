@@ -16,7 +16,7 @@ const Classes = () => {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Your password or name is invalid",
+            text: "Your Request is not allowed",
           });
       });
   }, []);

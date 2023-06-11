@@ -1,56 +1,65 @@
-import ClassCard from "../../components/ClassCard";
-import useMyClasses from "../../hooks/useMyClasses";
+import Swal from "sweetalert2";
+import Table, { Row } from "../../components/Table";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const MyClasses = () => {
-  const [allClass, refetch] = useMyClasses();
-  console.log(allClass);
-  return (
-    <div className="mx-20 my-20 flex bg-red-500">
-      {allClass?.map((singleClass) => (
-        <ClassCard key={singleClass._id} />
-      ))}
-      {/* {allClass?.map((singleClass) => {
-        <div
-          key={singleClass._id}
-          className="mx-auto max-w-xs rounded-3xl bg-white shadow-lg hover:shadow-xl"
-        >
-          <div className="h-[236px] rounded-t-3xl">
-            <img
-              className="rounded-t-3xl"
-              src="https://img.freepik.com/free-photo/pasta-spaghetti-with-shrimps-sauce_1220-5072.jpg?w=2000&t=st=1678041911~exp=1678042511~hmac=e4aa55e70f8c231d4d23832a611004f86eeb3b6ca067b3fa0c374ac78fe7aba6"
-              alt=""
-            />
-          </div>
-          <div className="p-4 sm:p-6">
-            <p className="mb-1 text-[22px] font-bold leading-7 text-gray-700">
-              Spagetti with shrimp sauce
-            </p>
-            <div className="flex flex-row">
-              <p className="mr-2 text-[17px] text-[#3C3C4399] line-through">
-                MVR 700
-              </p>
-              <p className="text-[17px] font-bold text-[#0FB478]">MVR 700</p>
-            </div>
-            <p className="mt-6 font-[15px] text-[#7C7C80]">
-              Our shrimp sauce is made with mozarella, a creamy taste of shrimp
-              with extra kick of spices.
-            </p>
+  const { user } = useContext(AuthContext);
+  const [axiosSecure] = useAxiosSecure();
+  const {
+    data: allClass = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["allClass", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure(`/allClass?email=${user?.email}`);
+      return res.data;
+    },
+  });
+  const cols = [
+    // { label: "Image", value: "Email" },
+    { label: "Class Name", value: "Class Name" },
+    { label: "price", value: "price" },
+    { label: "Students", value: "Students" },
+    { label: "Available seats", value: "Available seats" },
+    { label: "Status", value: "Status" },
+  ];
 
-            <a
-              href="https://apps.apple.com/us/app/id1493631471"
-              className="mt-1.5 block w-full transform rounded-[14px] px-4 py-3 text-center font-medium capitalize tracking-wide transition-colors duration-300 hover:bg-[#F2ECE7] hover:text-[#000000dd] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
-            >
-              Download app
-            </a>
-            <a
-              href="foodiesapp://food/1001"
-              className="mt-10 block w-full transform rounded-[14px] bg-[#FFC933] px-4 py-3 text-center font-medium capitalize tracking-wide transition-colors duration-300 hover:bg-[#FFC933DD] focus:outline-none focus:ring focus:ring-teal-300 focus:ring-opacity-80"
-            >
-              View on foodies
-            </a>
-          </div>
-        </div>;
-      })} */}
+  if (isLoading) {
+    return <div className="">loading...........state</div>;
+  }
+  if (error) {
+    return Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: `An error has occurred: ${error.message}`,
+    });
+  }
+  return (
+    <div className="px-8 py-8">
+      <h1 className="pb-4 text-center text-3xl font-medium">
+        Total Users: {allClass?.length}
+      </h1>
+      <Table cols={cols}>
+        {allClass.map((singleClass) => (
+          <Row key={singleClass._id}>
+            <td className="px-6 py-3">
+              <span className="font-medium">{singleClass?.className}</span>
+            </td>
+            <td className="px-6 py-3 text-center ">
+              <span className="font-medium">$ {singleClass?.price}</span>
+            </td>
+            <td className="px-6 py-3 text-center ">
+              <span className="font-medium">{singleClass?.Students}</span>
+            </td>
+            <td className="px-6 py-3 text-center ">{singleClass?.seats}</td>
+            <td className="px-6 py-3 text-center ">{singleClass?.status}</td>
+          </Row>
+        ))}
+      </Table>
     </div>
   );
 };

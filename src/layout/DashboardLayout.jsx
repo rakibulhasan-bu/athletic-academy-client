@@ -76,23 +76,23 @@ const DashboardLayout = () => {
             <>
               <li>
                 <NavLink
-                  to="/dashboard/addAClass"
-                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
-                >
-                  <AiOutlineVideoCameraAdd className="text-xl font-bold" />
-                  <span className="ml-3 flex-1 whitespace-nowrap">
-                    Add a class
-                  </span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
                   to="/dashboard/myClass"
                   className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
                 >
                   <BsFillGridFill className="text-xl font-bold" />
                   <span className="ml-3 flex-1 whitespace-nowrap">
                     My Classes
+                  </span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/addAClass"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                >
+                  <AiOutlineVideoCameraAdd className="text-xl font-bold" />
+                  <span className="ml-3 flex-1 whitespace-nowrap">
+                    Add a class
                   </span>
                 </NavLink>
               </li>
