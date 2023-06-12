@@ -26,6 +26,8 @@ const MyClasses = () => {
     { label: "Students", value: "Students" },
     { label: "Available seats", value: "Available seats" },
     { label: "Status", value: "Status" },
+    { label: "Feedback", value: "Feedback" },
+    { label: "Update", value: "Update" },
   ];
 
   if (isLoading) {
@@ -53,10 +55,21 @@ const MyClasses = () => {
               <span className="font-medium">$ {singleClass?.price}</span>
             </td>
             <td className="px-6 py-3 text-center ">
-              <span className="font-medium">{singleClass?.Students || 0}</span>
+              <span className="font-medium">{singleClass?.students}</span>
             </td>
             <td className="px-6 py-3 text-center ">{singleClass?.seats}</td>
             <td className="px-6 py-3 text-center ">{singleClass?.status}</td>
+            <td className="px-6 py-3">
+              <span className="font-medium">{singleClass?.feedback}</span>
+            </td>
+            <td className="px-6 py-3">
+              <button
+                // onClick={() => handleFeedback(SingleClasses)}
+                className={`rounded-lg border-primary bg-primary px-3 py-1.5 text-xs font-medium text-white`}
+              >
+                Update
+              </button>
+            </td>
           </Row>
         ))}
       </Table>

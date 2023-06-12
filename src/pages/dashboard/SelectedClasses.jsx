@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Table, { Row } from "../../components/Table";
+import { useNavigate } from "react-router-dom";
 
 const SelectedClasses = () => {
   const { user } = useContext(AuthContext);
@@ -17,6 +18,11 @@ const SelectedClasses = () => {
     const res = await axiosSecure.get(`/SelectedClasses/${user?.email}`);
     return res.data;
   });
+  const navigate = useNavigate();
+  const handlePayment = async (selectClass) => {
+    navigate("/dashboard/payment", { state: { selectClass: selectClass } });
+  };
+
   const handleDelete = async (selectClass) => {
     const id = selectClass._id;
     const res = await axiosSecure.put(`/removeSelectedClass/${user.email}`, {
@@ -90,16 +96,10 @@ const SelectedClasses = () => {
             <td className="px-1 py-0 text-left ">
               <div className="flex flex-col items-center gap-1">
                 <button
-                  // disabled={
-                  //   selectClass?.status === "deny" ||
-                  //   selectClass?.status === "approve"
-                  //     ? true
-                  //     : false
-                  // }
-                  // onClick={() => handleApprove(selectClass)}
+                  onClick={() => handlePayment(selectClass)}
                   className={`rounded-lg border-primary bg-primary px-3 py-1.5 text-xs font-medium text-white`}
                 >
-                  Payment
+                  Make Payment
                 </button>
                 <button
                   onClick={() => handleDelete(selectClass)}

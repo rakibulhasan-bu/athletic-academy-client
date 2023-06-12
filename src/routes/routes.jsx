@@ -9,7 +9,6 @@ import DashboardLayout from "../layout/DashboardLayout";
 import DashboardHome from "../pages/dashboard/DashboardHome";
 import SelectedClasses from "../pages/dashboard/SelectedClasses";
 import EnrolledClasses from "../pages/dashboard/EnrolledClasses";
-import Payment from "../pages/dashboard/Payment";
 import ManageUsers from "../pages/dashboard/ManageUsers";
 import AddAClass from "../pages/dashboard/AddAClass";
 import MyClasses from "../pages/dashboard/MyClasses";
@@ -18,6 +17,7 @@ import Home from "../pages/Home/Home";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
+import Payment from "../pages/dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {

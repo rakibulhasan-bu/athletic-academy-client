@@ -105,7 +105,14 @@ const AddAClass = () => {
               type="text"
               value="pending"
               required
-              className="hidden w-full rounded-md border border-gray-300 bg-gray-200 px-3 py-2 text-gray-900 focus:outline-secondary"
+              className="hidden"
+            />
+            <input
+              {...register("students", { valueAsNumber: true })}
+              type="number"
+              value={0}
+              required
+              className="hidden"
             />
           </div>
           <div className="flex items-center gap-8">
