@@ -38,6 +38,7 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then(() => {
+            setLoading(false);
             Swal.fire(
               `Welcome ${user?.displayName} to Athletic Academy`,
               "Successfully logged in!",
@@ -63,6 +64,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         reset();
+        setLoading(false);
         Swal.fire(
           "Login successful!",
           `Welcome back, ${loggedUser?.displayName}!`,
