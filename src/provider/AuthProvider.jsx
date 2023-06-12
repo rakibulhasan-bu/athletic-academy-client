@@ -24,7 +24,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [mobileNav, setMobileNav] = useState(false);
-
+  const [showModal, setShowModal] = useState(false);
   const signInWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
@@ -90,6 +90,8 @@ const AuthProvider = ({ children }) => {
     mobileNav,
     setMobileNav,
     signInWithGoogle,
+    showModal,
+    setShowModal,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

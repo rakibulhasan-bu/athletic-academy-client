@@ -6,7 +6,7 @@ import {
   BsPersonVideo2,
   BsFillPeopleFill,
 } from "react-icons/bs";
-import { MdOutlineClass } from "react-icons/md";
+import { MdOutlineClass, MdOutlineHistoryToggleOff } from "react-icons/md";
 import { SiGoogleclassroom } from "react-icons/si";
 import { HiUserGroup } from "react-icons/hi";
 import {
@@ -31,6 +31,7 @@ const DashboardLayout = () => {
       .then((result) => console.log(result))
       .catch((error) => console.log(error));
   };
+
   return (
     <div className="flex">
       <div className="h-screen w-1/5 overflow-y-auto bg-gray-50 px-6 py-20 text-lg dark:bg-gray-800">
@@ -67,6 +68,17 @@ const DashboardLayout = () => {
                   <SiGoogleclassroom className="text-xl font-bold" />
                   <span className="ml-3 flex-1 whitespace-nowrap">
                     Enrolled Classes
+                  </span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/dashboard/paymentHistory"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                >
+                  <MdOutlineHistoryToggleOff className="text-2xl font-bold" />
+                  <span className="ml-3 flex-1 whitespace-nowrap">
+                    Payment History
                   </span>
                 </NavLink>
               </li>

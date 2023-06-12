@@ -2,8 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import Table, { Row } from "../../components/Table";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const ManageClasses = () => {
+  const { loading } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
   const {
     data: allClasses = [],
@@ -14,7 +17,16 @@ const ManageClasses = () => {
     const res = await axiosSecure.get("/allClasses");
     return res.data;
   });
+  if (isLoading) return "loading ...";
+  if (loading) return "loading ...";
 
+  if (error) {
+    return Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: `An error has occurred: ${error.message}`,
+    });
+  }
   const handleApprove = async (SingleClasses) => {
     const res = await axiosSecure.patch(
       `/allClasses/admin/approve/${SingleClasses._id}`
@@ -91,22 +103,13 @@ const ManageClasses = () => {
     { label: "Image", value: "Image" },
     { label: "Class Name", value: "Class Name" },
     { label: "Instructor Name", value: "Instructor Name" },
-    { label: "Email", value: "Email" },
-    { label: "Seats", value: "Seats" },
+    { label: "Instructor Email", value: "Instructor Email" },
+    { label: "Available Seats", value: "Available Seats" },
     { label: "Price", value: "Price" },
     { label: "Status", value: "Status" },
     { label: "Actions", value: "Actions" },
   ];
 
-  if (isLoading) return "loading ...";
-
-  if (error) {
-    return Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: `An error has occurred: ${error.message}`,
-    });
-  }
   return (
     <div className="px-2 py-8">
       <h1 className="pb-4 text-center text-3xl font-medium">
@@ -118,7 +121,7 @@ const ManageClasses = () => {
             <td className="px-1 py-3 text-left ">
               <img
                 src={SingleClasses?.imgURL}
-                className="w-2o h-20 rounded-md object-cover"
+                className="h-20 w-20 rounded-md object-cover"
                 alt="class"
               />
             </td>

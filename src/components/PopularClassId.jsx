@@ -8,7 +8,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
-const SingleClass = ({ course, refetch }) => {
+const PopularClassId = ({ popularClass, refetch }) => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const {
@@ -19,7 +19,7 @@ const SingleClass = ({ course, refetch }) => {
     instructorEmail,
     imgURL,
     className,
-  } = course || {};
+  } = popularClass || {};
   const [axiosSecure] = useAxiosSecure();
 
   const {
@@ -34,7 +34,7 @@ const SingleClass = ({ course, refetch }) => {
     },
   });
 
-  const handleSelectClass = async (course) => {
+  const handleSelectClass = async (popularClass) => {
     if (!user) {
       navigate("/login");
       Swal.fire({
@@ -43,7 +43,7 @@ const SingleClass = ({ course, refetch }) => {
         text: "Please login and then select class",
       });
     }
-    const id = course._id;
+    const id = popularClass._id;
     const res = await axiosSecure.put(`/selectClass/${user.email}`, { id });
     console.log(res);
     const data = res.data;
@@ -51,14 +51,14 @@ const SingleClass = ({ course, refetch }) => {
       refetch();
       Swal.fire(
         "Successfully Select class!",
-        `${course?.className} course is Successfully selected`,
+        `${popularClass?.className} course is Successfully selected`,
         "success"
       );
     } else {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: `You already select ${course?.className} class in your dashboard, Please select another one`,
+        text: `You already select ${popularClass?.className} class in your dashboard, Please select another one`,
       });
     }
   };
@@ -111,7 +111,7 @@ const SingleClass = ({ course, refetch }) => {
             singleUser?.role === "instructor" ||
             seats === 0
           }
-          onClick={() => handleSelectClass(course)}
+          onClick={() => handleSelectClass(popularClass)}
           className={`mt-4  w-full rounded-xl px-3 py-2 text-xl font-medium shadow-lg ${
             singleUser?.role === "admin" ||
             singleUser?.role === "instructor" ||
@@ -127,4 +127,4 @@ const SingleClass = ({ course, refetch }) => {
   );
 };
 
-export default SingleClass;
+export default PopularClassId;

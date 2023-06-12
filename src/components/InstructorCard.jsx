@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 const InstructorCard = ({ instructor }) => {
-  console.log(instructor);
   const { role, name, imgURL, email } = instructor || {};
   return (
     <div className="cursor-pointer items-center rounded-lg border bg-gray-100 shadow hover:shadow-xl dark:border-gray-700 dark:bg-gray-800 sm:flex">

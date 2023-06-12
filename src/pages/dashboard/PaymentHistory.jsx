@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import Table, { Row } from "../../components/Table";
 import Swal from "sweetalert2";
+import Table, { Row } from "../../components/Table";
 
-const EnrolledClasses = () => {
+const PaymentHistory = () => {
   const { user } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
   const {
@@ -29,35 +29,31 @@ const EnrolledClasses = () => {
     });
   }
   const cols = [
-    { label: "Image", value: "Image" },
     { label: "Class Name", value: "Class Name" },
     { label: "Instructor Name", value: "Instructor Name" },
     { label: "Price", value: "Price" },
-    { label: "Date", value: "Date" },
+    { label: "Transaction Id", value: "Transaction Id" },
+    { label: "Date & Time", value: "Date & Time" },
   ];
   return (
-    <div className="px-6 py-8">
-      <h1 className="pb-4 text-center text-3xl font-medium">
+    <div className="px-8 py-8">
+      <h1 className="pb-8 text-center text-3xl font-medium">
         You Enrolled {enrolledClasses?.length} classes
       </h1>
       <Table cols={cols}>
         {enrolledClasses.map((enrollClass) => (
           <Row key={enrollClass._id}>
-            <td className="px-1 py-3 text-left ">
-              <img
-                src={enrollClass?.imgURL}
-                className="h-20 w-28 rounded-md object-cover"
-                alt="class"
-              />
-            </td>
             <td className="px-2 py-3 text-left ">
               <span className="font-medium">{enrollClass?.className}</span>
             </td>
-            <td className="py-3 pl-6 text-left ">
+            <td className="px-2 py-3 text-center ">
               <span className="font-medium">{enrollClass?.instructorName}</span>
             </td>
             <td className="px-2 py-3 text-center ">
               <span className="font-medium">$ {enrollClass?.price}</span>
+            </td>
+            <td className="px-2 py-3 text-center">
+              {enrollClass?.transactionId}
             </td>
             <td className="px-0 py-3 text-center">
               <span className="text-xs  font-medium">
@@ -65,9 +61,9 @@ const EnrolledClasses = () => {
                   day: "numeric",
                   month: "short",
                   year: "numeric",
-                  // hour: "numeric",
-                  // minute: "numeric",
-                  // hour12: true,
+                  hour: "numeric",
+                  minute: "numeric",
+                  hour12: true,
                 })}
               </span>
             </td>
@@ -78,4 +74,4 @@ const EnrolledClasses = () => {
   );
 };
 
-export default EnrolledClasses;
+export default PaymentHistory;

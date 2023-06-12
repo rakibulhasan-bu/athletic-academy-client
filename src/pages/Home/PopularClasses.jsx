@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
-import SingleClass from "../../components/SingleClass";
+import PopularClassId from "../../components/PopularClassId";
 
 const PopularClasses = () => {
   const {
@@ -33,17 +33,17 @@ const PopularClasses = () => {
           <p className="pb-3 text-center text-lg font-normal text-gray-500">
             Top-Rated Classes
           </p>
-          <h1 className="mx-auto w-5/6 pb-6 text-center text-3xl font-semibold text-gray-800 sm:w-4/6 xl:text-4xl">
+          <h1 className="mx-auto w-full pb-6 text-center text-3xl font-semibold text-gray-800 xl:text-4xl">
             Discover Highly Recommended Classes by Our Students
           </h1>
         </div>
       </div>
       <div className="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3">
         {popularClasses?.map((popularClass) => (
-          <SingleClass
+          <PopularClassId
             key={popularClass._id}
             refetch={refetch}
-            course={popularClass}
+            popularClass={popularClass}
           />
         ))}
       </div>

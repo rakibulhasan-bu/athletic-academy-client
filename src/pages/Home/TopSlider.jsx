@@ -26,15 +26,17 @@ const TopSlider = () => {
       className="mySwiper"
     >
       <SwiperSlide>
-        <div className="relative bg-black/50">
-          <img
-            className="relative -z-10 h-full w-full object-contain"
-            src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1686315709/Website-assets/Athletic%20Academy/Master_the_Basics_Fundamentals_of_Athletics_lyuesz.jpg"
-            alt="Sports Coaching and Leadership"
-          />
-          <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center text-white">
+        <div className="relative h-full ">
+          <div className="-z-10 h-full w-full">
+            <img
+              className="h-full w-full object-cover"
+              src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1686315709/Website-assets/Athletic%20Academy/Master_the_Basics_Fundamentals_of_Athletics_lyuesz.jpg"
+              alt="Sports Coaching and Leadership"
+            />
+          </div>
+          <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-white">
             <div className="mx-auto max-w-5xl text-center">
-              <h1 className="text-5xl font-semibold">
+              <h1 className="text-3xl font-semibold lg:text-5xl">
                 Master the Basics: Fundamentals of Athletics
               </h1>
               <p className="py-2 text-xl">
@@ -59,7 +61,7 @@ const TopSlider = () => {
           </div>
           <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-white">
             <div className="mx-auto max-w-5xl text-center">
-              <h1 className="text-5xl font-semibold">
+              <h1 className="text-3xl font-semibold lg:text-5xl">
                 Fuel Your Performance: Sports Nutrition and Fitness
               </h1>
               <p className="py-2 text-xl">
@@ -85,7 +87,7 @@ const TopSlider = () => {
           </div>
           <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-white">
             <div className="mx-auto max-w-5xl text-center">
-              <h1 className="text-5xl font-semibold">
+              <h1 className="text-3xl font-semibold lg:text-5xl">
                 Unleash Your Power: Strength and Conditioning for Sports
                 Performance
               </h1>
@@ -111,7 +113,7 @@ const TopSlider = () => {
           </div>
           <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-white">
             <div className="mx-auto max-w-5xl text-center">
-              <h1 className="text-5xl font-semibold">
+              <h1 className="text-3xl font-semibold lg:text-5xl">
                 Master Your Mind: Sports Psychology for Peak Performance
               </h1>
               <p className="py-2 text-xl">
@@ -136,7 +138,7 @@ const TopSlider = () => {
           </div>
           <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-white">
             <div className="mx-auto max-w-5xl text-center">
-              <h1 className="text-5xl font-semibold">
+              <h1 className="text-3xl font-semibold lg:text-5xl">
                 Stay in the Game: Sports Injury Prevention and Rehabilitation
               </h1>
               <p className="py-2 text-xl">
@@ -151,17 +153,17 @@ const TopSlider = () => {
       </SwiperSlide>
 
       <SwiperSlide>
-        <div className="relative bg-black/50">
-          <div>
+        <div className="relative h-full">
+          <div className="-z-10 h-full w-full">
             <img
-              className="relative -z-10 h-full w-full object-contain"
+              className="h-full w-full object-cover"
               src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1686280707/Website-assets/Athletic%20Academy/Sports_Coaching_and_Leadership_gvyvgj.jpg"
               alt="Sports Coaching and Leadership"
             />
           </div>
-          <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center text-white">
+          <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-white">
             <div className="mx-auto max-w-5xl text-center">
-              <h1 className="text-5xl font-semibold">
+              <h1 className="text-3xl font-semibold lg:text-5xl">
                 Lead to Succeed: Sports Coaching and Leadership
               </h1>
               <p className="py-2 text-xl">
@@ -186,7 +188,7 @@ const TopSlider = () => {
           </div>
           <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-white">
             <div className="mx-auto max-w-5xl text-center">
-              <h1 className="text-5xl font-semibold">
+              <h1 className="text-3xl font-semibold lg:text-5xl">
                 Game Changers: Sports Marketing and Sponsorship
               </h1>
               <p className="py-2 text-xl">
@@ -212,7 +214,7 @@ const TopSlider = () => {
           </div>
           <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-white">
             <div className="mx-auto max-w-5xl text-center">
-              <h1 className="text-5xl font-semibold">
+              <h1 className="text-3xl font-semibold lg:text-5xl">
                 Unlock Your Performance: Sports Analytics and Performance
                 Tracking
               </h1>
@@ -229,15 +231,17 @@ const TopSlider = () => {
       </SwiperSlide>
 
       <SwiperSlide>
-        <div className="relative bg-black/50">
-          <img
-            className="relative -z-10 h-full w-full object-contain"
-            src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1686321180/Website-assets/Athletic%20Academy/Sports_Officiating_and_Rules_x0jmvt.jpg"
-            alt="Sports Coaching and Leadership"
-          />
-          <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center text-white">
+        <div className="relative h-full">
+          <div className="-z-10 h-full w-full">
+            <img
+              className="h-full w-full object-cover"
+              src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1686321180/Website-assets/Athletic%20Academy/Sports_Officiating_and_Rules_x0jmvt.jpg"
+              alt="Sports Coaching and Leadership"
+            />
+          </div>
+          <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-white">
             <div className="mx-auto max-w-5xl text-center">
-              <h1 className="text-5xl font-semibold">
+              <h1 className="text-3xl font-semibold lg:text-5xl">
                 Master the Game: Sports Officiating and Rules
               </h1>
               <p className="py-2 text-xl">
@@ -252,15 +256,17 @@ const TopSlider = () => {
       </SwiperSlide>
 
       <SwiperSlide>
-        <div className="relative bg-black/50">
-          <img
-            className="relative -z-10 h-full w-full object-contain"
-            src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1686321324/Website-assets/Athletic%20Academy/Sports_Broadcasting_and_Journalism_ljvbyy.png"
-            alt="Sports Coaching and Leadership"
-          />
-          <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center text-white">
+        <div className="relative h-full">
+          <div className="-z-10 h-full w-full">
+            <img
+              className="h-full w-full object-cover"
+              src="https://res.cloudinary.com/dwx2jd8b1/image/upload/v1686321324/Website-assets/Athletic%20Academy/Sports_Broadcasting_and_Journalism_ljvbyy.png"
+              alt="Sports Coaching and Leadership"
+            />
+          </div>
+          <div className="absolute left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-white">
             <div className="mx-auto max-w-5xl text-center">
-              <h1 className="text-5xl font-semibold">
+              <h1 className="text-3xl font-semibold lg:text-5xl">
                 Unleash Your Voice: Sports Broadcasting and Journalism
               </h1>
               <p className="py-2 text-xl">
