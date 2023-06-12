@@ -71,7 +71,7 @@ const SelectedClasses = () => {
             <td className="px-1 py-3 text-left ">
               <img
                 src={selectClass?.imgURL}
-                className="w-2o h-20 rounded-md object-cover"
+                className="h-20 w-28 rounded-md object-cover"
                 alt="class"
               />
             </td>
@@ -88,7 +88,7 @@ const SelectedClasses = () => {
               <span className="font-medium">{selectClass?.seats}</span>
             </td>
             <td className="px-2 py-3 text-center ">
-              <span className="font-medium">{selectClass?.price}</span>
+              <span className="font-medium">$ {selectClass?.price}</span>
             </td>
             <td className="px-2 py-3 text-center ">
               <span className="font-medium">{selectClass?.status}</span>

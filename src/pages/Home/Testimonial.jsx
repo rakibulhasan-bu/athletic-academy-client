@@ -44,36 +44,48 @@ const allSlides = [
 
 const Testimonial = () => {
   return (
-    <Swiper
-      spaceBetween={30}
-      centeredSlides={true}
-      autoplay={{
-        delay: 3500,
-        disableOnInteraction: false,
-      }}
-      pagination={{
-        clickable: true,
-      }}
-      navigation={true}
-      modules={[Autoplay, Pagination, Navigation]}
-      className="mySwiper"
-    >
-      {allSlides?.map((slides, index) => (
-        <SwiperSlide key={index}>
-          <div className="mx-auto my-8 flex max-w-xl flex-col rounded-3xl bg-gray-200">
-            <img
-              className="h-96 w-full rounded-t-3xl object-cover"
-              src={slides?.img}
-              alt="Sports Coaching and Leadership"
-            />
-            <div className="p-4 text-center">
-              <h1 className="text-2xl font-semibold">{slides?.name}</h1>
-              <p className="pt-1 text-xl">{slides?.details}</p>
+    <>
+      <div className="container mx-auto flex justify-center pt-6">
+        <div>
+          <p className="pb-3 text-center text-lg font-normal text-gray-500">
+            Inspiring Words from Our Students
+          </p>
+          <h1 className="mx-auto w-5/6 pb-6 text-center text-3xl font-semibold text-gray-800 sm:w-4/6 xl:text-4xl">
+            See What Our Students Have to Say About Their Experience
+          </h1>
+        </div>
+      </div>
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        {allSlides?.map((slides, index) => (
+          <SwiperSlide key={index}>
+            <div className="mx-auto my-8 flex max-w-xl flex-col rounded-3xl bg-gray-200">
+              <img
+                className="h-96 w-full rounded-t-3xl object-cover"
+                src={slides?.img}
+                alt="Sports Coaching and Leadership"
+              />
+              <div className="p-4 text-center">
+                <h1 className="text-2xl font-semibold">{slides?.name}</h1>
+                <p className="pt-1 text-xl">{slides?.details}</p>
+              </div>
             </div>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </>
   );
 };
 

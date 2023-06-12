@@ -1,80 +1,51 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import Swal from "sweetalert2";
+import SingleClass from "../../components/SingleClass";
+
 const PopularClasses = () => {
+  const {
+    data: popularClasses = [],
+    isLoading,
+    error,
+    refetch,
+  } = useQuery(["popularClasses"], async () => {
+    const res = await axios.get(
+      `${import.meta.env.VITE_API_URL}/popularClasses`
+    );
+    return res.data;
+  });
+  console.log(popularClasses);
+  if (isLoading) {
+    return "loading........";
+  }
+  if (error) {
+    return Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Your Request is not allowed",
+    });
+  }
   return (
-    <div>
-      <div className="bg-purple-200 py-16">
-        <div className="container m-auto px-6 text-gray-500 md:px-12 xl:px-0">
-          <div className="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3">
-            <div className="rounded-2xl bg-white px-8 py-12 shadow-xl sm:px-12 lg:px-8">
-              <div className="mb-12 space-y-4">
-                <h3 className="text-2xl font-semibold text-purple-900">
-                  Graphic Design
-                </h3>
-                <p className="mb-6">
-                  Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                  at cum, consectetur ullam tempora ipsa iste officia sed
-                  officiis! Incidunt ea animi officiis.
-                </p>
-                <a href="#" className="block font-medium text-purple-600">
-                  Know more
-                </a>
-              </div>
-              <img
-                src="https://tailus.io/sources/blocks/end-image/preview/images/graphic.svg"
-                className="-mb-12 ml-auto w-2/3"
-                alt="illustration"
-                loading="lazy"
-                width="900"
-                height="600"
-              />
-            </div>
-            <div className="rounded-2xl bg-white px-8 py-12 shadow-xl sm:px-12 lg:px-8">
-              <div className="mb-12 space-y-4">
-                <h3 className="text-2xl font-semibold text-purple-900">
-                  UI Design
-                </h3>
-                <p className="mb-6">
-                  Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                  at cum, consectetur ullam tempora ipsa iste officia sed
-                  officiis! Incidunt ea animi officiis.
-                </p>
-                <a href="#" className="block font-medium text-purple-600">
-                  Know more
-                </a>
-              </div>
-              <img
-                src="https://tailus.io/sources/blocks/end-image/preview/images/ui-design.svg"
-                className="ml-auto w-2/3"
-                alt="illustration"
-                loading="lazy"
-                width="900"
-                height="600"
-              />
-            </div>
-            <div className="rounded-2xl bg-white px-8 py-12 shadow-xl sm:px-12 lg:px-8">
-              <div className="mb-12 space-y-4">
-                <h3 className="text-2xl font-semibold text-purple-900">
-                  UX Design
-                </h3>
-                <p className="mb-6">
-                  Obcaecati, quam? Eligendi, nulla numquam natus laborum porro
-                  at cum, consectetur ullam tempora ipsa iste officia sed
-                  officiis! Incidunt ea animi officiis.
-                </p>
-                <a href="#" className="block font-medium text-purple-600">
-                  Know more
-                </a>
-              </div>
-              <img
-                src="https://tailus.io/sources/blocks/end-image/preview/images/ux-design.svg"
-                className="ml-auto w-2/3 "
-                alt="illustration"
-                loading="lazy"
-                width="900"
-                height="600"
-              />
-            </div>
-          </div>
+    <div className="container mx-auto px-6 pb-6 text-gray-500 md:px-12 xl:px-0">
+      <div className="container mx-auto flex justify-center pt-16">
+        <div>
+          <p className="pb-3 text-center text-lg font-normal text-gray-500">
+            Top-Rated Classes
+          </p>
+          <h1 className="mx-auto w-5/6 pb-6 text-center text-3xl font-semibold text-gray-800 sm:w-4/6 xl:text-4xl">
+            Discover Highly Recommended Classes by Our Students
+          </h1>
         </div>
+      </div>
+      <div className="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3">
+        {popularClasses?.map((popularClass) => (
+          <SingleClass
+            key={popularClass._id}
+            refetch={refetch}
+            course={popularClass}
+          />
+        ))}
       </div>
     </div>
   );
