@@ -31,7 +31,7 @@ const Classes = () => {
       <h1 className="text-center text-3xl font-medium">
         Explore Athletic academy Classes
       </h1>
-      <div className="flex gap-12 pt-12">
+      <div className="grid grid-cols-1 gap-12 pt-12 lg:grid-cols-3">
         {courses?.map((course) => (
           <SingleClass refetch={refetch} course={course} key={course._id} />
         ))}

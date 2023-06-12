@@ -6,7 +6,7 @@
     Athletic Academy - Fitness Learning Platform
     <br/>
     <br/>
-    <a href="https://savoir-cuisiner.web.app/">View Live site</a>
+    <a href="https://athletic-academy.web.app/">View Live site</a>
   </h3>
 </p>
 

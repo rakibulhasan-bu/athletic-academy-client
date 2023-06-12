@@ -31,7 +31,12 @@
   color: #fff;
 } */
 .btn {
-  background: linear-gradient(120deg, rgb(0, 35, 88), crimson, orange);
+  background: linear-gradient(
+    120deg,
+    rgb(138, 61, 209),
+    #7b2ad8,
+    rgb(67, 11, 131)
+  );
   background-size: 200% 100%;
   background-position: 100% 0;
   transition: background-position 0.5s;
