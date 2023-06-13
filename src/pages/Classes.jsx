@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import SingleClass from "../components/SingleClass";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { ImSpinner6 } from "react-icons/im";
 
 const Classes = () => {
   const {
@@ -16,7 +17,11 @@ const Classes = () => {
     return res.data;
   });
   if (isLoading) {
-    return "loading........";
+    return (
+      <div className="flex h-screen w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-9xl font-extrabold text-primary" />
+      </div>
+    );
   }
   if (error) {
     return Swal.fire({
@@ -31,7 +36,7 @@ const Classes = () => {
       <h1 className="text-center text-3xl font-medium">
         Explore Athletic academy Classes
       </h1>
-      <div className="grid grid-cols-1 gap-12 pt-12 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-12 px-4 pt-12 md:px-0 lg:grid-cols-3">
         {courses?.map((course) => (
           <SingleClass refetch={refetch} course={course} key={course._id} />
         ))}

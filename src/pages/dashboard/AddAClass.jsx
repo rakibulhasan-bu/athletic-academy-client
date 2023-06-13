@@ -13,6 +13,7 @@ const AddAClass = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data);
     setLoading(true);
     console.log(data);
     const formData = new FormData();
@@ -33,6 +34,7 @@ const AddAClass = () => {
             instructorEmail,
             className,
             status,
+            students,
           } = data || {};
           const addClassData = {
             seats,
@@ -42,6 +44,7 @@ const AddAClass = () => {
             className,
             status,
             imgURL,
+            students,
           };
           fetch(`${import.meta.env.VITE_API_URL}/allClass`, {
             method: "POST",

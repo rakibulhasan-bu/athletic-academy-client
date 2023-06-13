@@ -4,6 +4,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { ImSpinner6 } from "react-icons/im";
 
 const ManageClasses = () => {
   const { loading } = useContext(AuthContext);
@@ -17,8 +18,18 @@ const ManageClasses = () => {
     const res = await axiosSecure.get("/allClasses");
     return res.data;
   });
-  if (isLoading) return "loading ...";
-  if (loading) return "loading ...";
+  if (isLoading)
+    return (
+      <div className="flex h-screen w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-9xl font-extrabold text-primary" />
+      </div>
+    );
+  if (loading)
+    return (
+      <div className="flex h-screen w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-9xl font-extrabold text-primary" />
+      </div>
+    );
 
   if (error) {
     return Swal.fire({

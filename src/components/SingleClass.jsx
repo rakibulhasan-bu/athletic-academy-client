@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { ImSpinner6 } from "react-icons/im";
 
 const SingleClass = ({ course, refetch }) => {
   const navigate = useNavigate();
@@ -63,7 +64,11 @@ const SingleClass = ({ course, refetch }) => {
     }
   };
   if (isLoading) {
-    return <div className="">loading...........state</div>;
+    return (
+      <div className="flex w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-5xl font-extrabold text-primary" />
+      </div>
+    );
   }
   if (error) {
     return Swal.fire({
@@ -99,7 +104,7 @@ const SingleClass = ({ course, refetch }) => {
         </div>
         <div className="flex items-center space-x-2 text-lg font-medium text-gray-800">
           <MdPeople />
-          <p>Students: {students}</p>
+          <p>Students: {students || 0}</p>
         </div>
         <div className="flex items-center space-x-2 text-lg font-medium text-gray-800">
           <MdEventAvailable />

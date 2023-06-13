@@ -3,14 +3,15 @@ import { RxAvatar } from "react-icons/rx";
 import Swal from "sweetalert2";
 import { MdEventAvailable, MdOutlineMail, MdPeople } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
+import { ImSpinner6 } from "react-icons/im";
 
 const PopularClassId = ({ popularClass, refetch }) => {
+  const [currentUser, setCurrentUser] = useState({});
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { loading, user, setLoading } = useContext(AuthContext);
   const {
     seats,
     students,
@@ -21,22 +22,23 @@ const PopularClassId = ({ popularClass, refetch }) => {
     className,
   } = popularClass || {};
   const [axiosSecure] = useAxiosSecure();
-
-  const {
-    data: singleUser = {},
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["singleUser", user?.email],
-    queryFn: async () => {
-      const res = await axiosSecure(`/singleUser/${user?.email}`);
-      return res.data;
-    },
-  });
+  if (user) {
+    const token = localStorage.getItem("access-token");
+    fetch(`${import.meta.env.VITE_API_URL}/singleUser/${user?.email}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setCurrentUser(data));
+  }
 
   const handleSelectClass = async (popularClass) => {
     if (!user) {
       navigate("/login");
+      setLoading(false);
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -62,15 +64,12 @@ const PopularClassId = ({ popularClass, refetch }) => {
       });
     }
   };
-  if (isLoading) {
-    return <div className="">loading...........state</div>;
-  }
-  if (error) {
-    return Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: `An error has occurred: ${error.message}`,
-    });
+  if (loading) {
+    return (
+      <div className="flex h-60 w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-7xl font-extrabold text-primary" />
+      </div>
+    );
   }
   return (
     <div
@@ -107,15 +106,15 @@ const PopularClassId = ({ popularClass, refetch }) => {
         </div>
         <button
           disabled={
-            singleUser?.role === "admin" ||
-            singleUser?.role === "instructor" ||
-            seats === 0
+            seats === 0 ||
+            currentUser?.role === "admin" ||
+            currentUser?.role === "instructor"
           }
           onClick={() => handleSelectClass(popularClass)}
           className={`mt-4  w-full rounded-xl px-3 py-2 text-xl font-medium shadow-lg ${
-            singleUser?.role === "admin" ||
-            singleUser?.role === "instructor" ||
-            seats === 0
+            seats === 0 ||
+            currentUser?.role === "admin" ||
+            currentUser?.role === "instructor"
               ? "cursor-not-allowed border-gray-500 bg-gray-300 text-gray-700"
               : "border-primary bg-primary text-white"
           }`}

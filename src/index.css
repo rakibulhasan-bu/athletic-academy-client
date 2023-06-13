@@ -61,7 +61,7 @@
 @media only screen and (max-device-width: 767px) and (-webkit-min-device-pixel-ratio: 2) {
   .swiper {
     width: 100dvw;
-    height: 60dvh;
+    height: 70dvh;
   }
 }
 /* .swiper img {

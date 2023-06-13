@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Navigate, useLocation } from "react-router";
 import { AuthContext } from "../provider/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
+import { ImSpinner6 } from "react-icons/im";
 
 const AdminRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
@@ -10,7 +11,11 @@ const AdminRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading || isAdminLoading) {
-    return "loading...";
+    return (
+      <div className="flex h-screen w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-9xl font-extrabold text-primary" />
+      </div>
+    );
   }
 
   if (user && isAdmin) {

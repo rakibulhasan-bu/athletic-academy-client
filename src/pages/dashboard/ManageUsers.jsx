@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Table, { Row } from "../../components/Table";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { ImSpinner6 } from "react-icons/im";
 
 const ManageUsers = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -47,7 +48,12 @@ const ManageUsers = () => {
     { label: "Actions", value: "Actions" },
   ];
 
-  if (isLoading) return "loading ...";
+  if (isLoading)
+    return (
+      <div className="flex h-screen w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-9xl font-extrabold text-primary" />
+      </div>
+    );
 
   if (error) {
     return Swal.fire({

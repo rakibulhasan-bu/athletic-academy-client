@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Footer = () => {
+  const { user, logOut } = useContext(AuthContext);
   return (
     <footer className="bg-grey-100">
       <div className="container mx-auto px-4 pt-8 sm:px-6 lg:px-8">
@@ -29,7 +32,7 @@ const Footer = () => {
                   placeholder="Email Address"
                 />
 
-                <button className="btn font-medium md:mx-4 md:w-auto lg:w-full">
+                <button className="btn py-1.5 font-medium text-white md:mx-4 md:w-auto lg:w-full">
                   Subscribe
                 </button>
               </div>
@@ -166,6 +169,26 @@ const Footer = () => {
 
               <nav aria-label="Footer Helpful Nav" className="mt-8">
                 <ul className="space-y-4 text-sm">
+                  {user ? (
+                    <li>
+                      <Link
+                        onClick={() => logOut()}
+                        className="text-gray-700 transition hover:text-gray-700/75"
+                        to="/login"
+                      >
+                        Log Out
+                      </Link>
+                    </li>
+                  ) : (
+                    <li>
+                      <Link
+                        className="text-gray-700 transition hover:text-gray-700/75"
+                        to="/login"
+                      >
+                        Log in
+                      </Link>
+                    </li>
+                  )}
                   <li>
                     <Link
                       className="text-gray-700 transition hover:text-gray-700/75"

@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import Swal from "sweetalert2";
 import Table, { Row } from "../../components/Table";
+import { ImSpinner6 } from "react-icons/im";
 
 const PaymentHistory = () => {
   const { user } = useContext(AuthContext);
@@ -19,14 +19,18 @@ const PaymentHistory = () => {
   console.log(enrolledClasses);
 
   if (isLoading) {
-    return "loading........";
+    return (
+      <div className="flex h-screen w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-9xl font-extrabold text-primary" />
+      </div>
+    );
   }
   if (error) {
-    return Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Your Request is not allowed",
-    });
+    return (
+      <div className="flex min-h-screen items-center justify-center text-4xl font-medium text-gray-700">
+        You haven&apos;t any payment History.
+      </div>
+    );
   }
   const cols = [
     { label: "Class Name", value: "Class Name" },

@@ -3,7 +3,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Table, { Row } from "../../components/Table";
-import Swal from "sweetalert2";
+import { ImSpinner6 } from "react-icons/im";
 
 const EnrolledClasses = () => {
   const { user } = useContext(AuthContext);
@@ -19,14 +19,18 @@ const EnrolledClasses = () => {
   console.log(enrolledClasses);
 
   if (isLoading) {
-    return "loading........";
+    return (
+      <div className="flex h-screen w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-9xl font-extrabold text-primary" />
+      </div>
+    );
   }
   if (error) {
-    return Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Your Request is not allowed",
-    });
+    return (
+      <div className="flex min-h-screen items-center justify-center text-4xl font-medium text-gray-700">
+        You haven&apos;t Enrolled any classes yet.
+      </div>
+    );
   }
   const cols = [
     { label: "Image", value: "Image" },

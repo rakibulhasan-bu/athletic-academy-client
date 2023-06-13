@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { MdClose } from "react-icons/md";
-import { ImSpinner9 } from "react-icons/im";
+import { ImSpinner6, ImSpinner9 } from "react-icons/im";
 import { useForm } from "react-hook-form";
 
 const MyClasses = () => {
@@ -16,6 +16,7 @@ const MyClasses = () => {
     data: allClass = [],
     isLoading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ["allClass", user?.email],
     queryFn: async () => {
@@ -30,6 +31,7 @@ const MyClasses = () => {
       data,
     });
     if (res.data.modifiedCount > 0) {
+      refetch();
       reset();
       Swal.fire(
         "Update successful!",
@@ -61,7 +63,11 @@ const MyClasses = () => {
   ];
 
   if (isLoading) {
-    return <div className="">loading...........state</div>;
+    return (
+      <div className="flex h-screen w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-9xl font-extrabold text-primary" />
+      </div>
+    );
   }
   if (error) {
     return Swal.fire({

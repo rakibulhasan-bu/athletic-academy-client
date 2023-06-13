@@ -1,28 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import Swal from "sweetalert2";
+import { useContext, useState } from "react";
+import { useEffect } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import { ImSpinner6 } from "react-icons/im";
 
 const PopularInstractor = () => {
-  const {
-    data: popularInstructor = [],
-    isLoading,
-    error,
-  } = useQuery(["popularInstructor"], async () => {
-    const res = await axios.get(
-      `${import.meta.env.VITE_API_URL}/popularInstructor`
+  const { loading } = useContext(AuthContext);
+  const [popularInstructor, setPopularInstructor] = useState([]);
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/popularInstructor`)
+      .then((res) => res.json())
+      .then((data) => setPopularInstructor(data));
+  }, []);
+  if (loading) {
+    return (
+      <div className="flex h-screen w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-9xl font-extrabold text-primary" />
+      </div>
     );
-    return res.data;
-  });
-
-  if (isLoading) {
-    return "loading........";
-  }
-  if (error) {
-    return Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Your Request is not allowed",
-    });
   }
   return (
     <div className="container mx-auto">
@@ -36,18 +30,15 @@ const PopularInstractor = () => {
           </h1>
         </div>
       </div>
-      <div className="grid items-center gap-12 px-10 pt-10 lg:grid-cols-3 ">
-        {popularInstructor?.map((instructor) => {
+      <div className="grid justify-between gap-8 px-10 pt-10 lg:grid-cols-3 ">
+        {popularInstructor?.map((instructor, i) => {
           return (
-            <div
-              key={instructor._id}
-              className="relative mb-32 mt-16 rounded-lg shadow hover:shadow-xl sm:mb-24"
-            >
-              <div className="overflow-hidden rounded-lg bg-gray-200 shadow-md">
+            <div key={i} className="relative mt-16 rounded-lg">
+              <div className="overflow-hidden rounded-lg bg-gray-200 shadow-md hover:shadow-xl ">
                 <div className="absolute -mt-20 flex w-full justify-center">
                   <div className="h-40 w-40">
                     <img
-                      src={instructor?.instructorImage}
+                      src={instructor?.imgURL}
                       alt="instructor"
                       className="h-full w-full rounded-full object-cover shadow-md"
                     />
@@ -55,17 +46,19 @@ const PopularInstractor = () => {
                 </div>
                 <div className="mt-24 px-6">
                   <div className="pb-1 text-center text-3xl font-semibold">
-                    {instructor?._id}
+                    {instructor?.name}
                   </div>
                   <p className="text-center text-lg text-gray-800">
                     Instructor
                   </p>
                   <p className=" text-center text-lg text-gray-800">
-                    Total Students: {instructor?.totalStudents}
+                    Total Students: {instructor?.totalStudents || 0}
                   </p>
-                  <p className="pb-[2px] text-xl text-gray-800">Courses:</p>
-                  {instructor?.courses.map((course, i) => (
-                    <p key={i} className="font-normal text-gray-600">
+                  {instructor?.courseNames.length !== 0 && (
+                    <p className="pb-[2px] text-lg text-gray-800">Courses:</p>
+                  )}
+                  {instructor?.courseNames.map((course, i) => (
+                    <p key={i} className="text-sm font-normal text-gray-600">
                       {i + 1} {course}
                     </p>
                   ))}

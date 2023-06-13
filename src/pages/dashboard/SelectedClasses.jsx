@@ -5,8 +5,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Table, { Row } from "../../components/Table";
 import { useNavigate } from "react-router-dom";
+import { ImSpinner6 } from "react-icons/im";
 
 const SelectedClasses = () => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [axiosSecure] = useAxiosSecure();
   const {
@@ -16,9 +18,10 @@ const SelectedClasses = () => {
     error,
   } = useQuery(["SelectedClasses"], async () => {
     const res = await axiosSecure.get(`/SelectedClasses/${user?.email}`);
+    console.log(res.data);
     return res.data;
   });
-  const navigate = useNavigate();
+
   const handlePayment = async (selectClass) => {
     navigate("/dashboard/payment", { state: { selectClass: selectClass } });
   };
@@ -41,14 +44,18 @@ const SelectedClasses = () => {
   };
 
   if (isLoading) {
-    return "loading........";
+    return (
+      <div className="flex h-screen w-full items-center justify-center font-bold">
+        <ImSpinner6 className="animate-spin text-9xl font-extrabold text-primary" />
+      </div>
+    );
   }
   if (error) {
-    return Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Your Request is not allowed",
-    });
+    return (
+      <div className="flex min-h-screen items-center justify-center text-4xl font-medium text-gray-700">
+        You haven&apos;t selected any classes yet.
+      </div>
+    );
   }
   const cols = [
     { label: "Image", value: "Image" },

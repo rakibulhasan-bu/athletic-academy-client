@@ -68,6 +68,7 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    setLoading(true);
     const userName = data?.name;
     const formData = new FormData();
     formData.append("image", data.image[0]);
@@ -79,13 +80,16 @@ const Register = () => {
       .then((res) => res.json())
       .then((imageData) => {
         if (imageData.success) {
+          setLoading(true);
           const imgURL = imageData.data.display_url;
 
           if (data?.password === data?.ConfirmPassword) {
+            setLoading(true);
             createUser(data?.email, data?.password)
               .then(() => {
                 updateUserProfile(data?.name, imgURL)
                   .then(() => {
+                    setLoading(true);
                     const userData = {
                       name: data?.name,
                       email: data?.email,
@@ -101,6 +105,7 @@ const Register = () => {
                       .then((res) => res.json())
                       .then((data) => {
                         if (data.insertedId) {
+                          setLoading(false);
                           reset();
                           Swal.fire(
                             `Welcome ${userName} to Athletic Academy`,
