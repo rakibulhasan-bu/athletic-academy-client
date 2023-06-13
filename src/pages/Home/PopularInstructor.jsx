@@ -19,13 +19,13 @@ const PopularInstractor = () => {
     );
   }
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto dark:bg-gray-800">
       <div className="container mx-auto flex justify-center pt-16">
         <div>
-          <p className="pb-3 text-center text-lg font-normal text-gray-500">
+          <p className="pb-3 text-center text-lg font-normal text-gray-500 dark:text-gray-100">
             Popular Instructors
           </p>
-          <h1 className="mx-auto w-5/6 pb-6 text-center text-3xl font-semibold text-gray-800 sm:w-4/6 xl:text-4xl">
+          <h1 className="mx-auto w-5/6 pb-6 text-center text-3xl font-semibold text-gray-800 dark:text-gray-100 sm:w-4/6 xl:text-4xl">
             The Talented People Behind the Scenes of the Athletic Academy
           </h1>
         </div>
@@ -45,7 +45,7 @@ const PopularInstractor = () => {
                   </div>
                 </div>
                 <div className="mt-24 px-6">
-                  <div className="pb-1 text-center text-3xl font-semibold">
+                  <div className="pb-1 text-center text-3xl font-semibold text-gray-800">
                     {instructor?.name}
                   </div>
                   <p className="text-center text-lg text-gray-800">

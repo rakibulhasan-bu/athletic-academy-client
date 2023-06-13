@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .active {
-  @apply border-b-2 border-primary font-medium text-secondary md:text-primary;
+  @apply border-b-2 border-primary font-medium text-secondary dark:border-white dark:text-white md:text-primary;
 }
 
 @layer base {

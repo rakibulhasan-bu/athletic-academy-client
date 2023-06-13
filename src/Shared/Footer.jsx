@@ -5,7 +5,7 @@ import { AuthContext } from "../provider/AuthProvider";
 const Footer = () => {
   const { user, logOut } = useContext(AuthContext);
   return (
-    <footer className="bg-grey-100">
+    <footer className="bg-grey-100 dark:bg-gray-800">
       <div className="container mx-auto px-4 pt-8 sm:px-6 lg:px-8">
         {/* this is upper part of footer  */}
         <div className="flex flex-col gap-x-8 lg:flex-row">
@@ -20,7 +20,7 @@ const Footer = () => {
 
             {/* this is subscribe section  */}
             <div className="">
-              <h1 className="max-w-lg text-xl font-semibold tracking-tight text-gray-800  xl:text-2xl">
+              <h1 className="max-w-lg text-xl font-semibold tracking-tight text-gray-800 dark:text-gray-100  xl:text-2xl">
                 Subscribe our newsletter to get update.
               </h1>
 
@@ -28,7 +28,7 @@ const Footer = () => {
                 <input
                   id="email"
                   type="email"
-                  className="rounded-md border bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none lg:w-72 "
+                  className="rounded-md border bg-white px-4 py-2 text-gray-700  focus:border-blue-400 focus:outline-none dark:text-gray-100 lg:w-72 "
                   placeholder="Email Address"
                 />
 
@@ -45,7 +45,7 @@ const Footer = () => {
                   to="https://www.facebook.com/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-500 transition hover:text-gray-800"
+                  className="text-gray-500 transition hover:text-gray-800 dark:text-gray-100"
                 >
                   <span className="sr-only">Facebook</span>
                   <svg
@@ -68,7 +68,7 @@ const Footer = () => {
                   to="https://www.instagram.com/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-500 transition hover:text-gray-800"
+                  className="text-gray-500 transition hover:text-gray-800 dark:text-gray-100"
                 >
                   <span className="sr-only">Instagram</span>
                   <svg
@@ -91,7 +91,7 @@ const Footer = () => {
                   to="https://twitter.com/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-500 transition hover:text-gray-800"
+                  className="text-gray-500 transition hover:text-gray-800 dark:text-gray-100"
                 >
                   <span className="sr-only">Twitter</span>
                   <svg
@@ -110,7 +110,7 @@ const Footer = () => {
                   to="https://www.youtube.com/"
                   rel="noreferrer"
                   target="_blank"
-                  className="text-gray-500 transition hover:text-gray-800"
+                  className="text-gray-500 transition hover:text-gray-800 dark:text-gray-100"
                 >
                   <span className="sr-only">youtube</span>
                   <svg
@@ -129,13 +129,15 @@ const Footer = () => {
           <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:w-7/12">
             {/* about us section here  */}
             <div className="text-center sm:text-left">
-              <p className="text-lg font-medium text-gray-900">About Us</p>
+              <p className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                About Us
+              </p>
 
               <nav aria-label="Footer About Nav" className="mt-8">
                 <ul className="space-y-4 text-sm">
                   <li>
                     <Link
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-gray-700  transition hover:text-gray-700/75 dark:text-gray-100"
                       to="/"
                     >
                       Company History
@@ -144,7 +146,7 @@ const Footer = () => {
 
                   <li>
                     <Link
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-gray-700  transition hover:text-gray-700/75 dark:text-gray-100"
                       to="/"
                     >
                       Employee Handbook
@@ -153,7 +155,7 @@ const Footer = () => {
 
                   <li>
                     <Link
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-gray-700  transition hover:text-gray-700/75 dark:text-gray-100"
                       to="/"
                     >
                       Meet the Team
@@ -165,7 +167,9 @@ const Footer = () => {
 
             {/* helpful links here  */}
             <div className="text-center sm:text-left">
-              <p className="text-lg font-medium text-gray-900">Helpful Links</p>
+              <p className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                Helpful Links
+              </p>
 
               <nav aria-label="Footer Helpful Nav" className="mt-8">
                 <ul className="space-y-4 text-sm">
@@ -173,7 +177,7 @@ const Footer = () => {
                     <li>
                       <Link
                         onClick={() => logOut()}
-                        className="text-gray-700 transition hover:text-gray-700/75"
+                        className="text-gray-700  transition hover:text-gray-700/75 dark:text-gray-100"
                         to="/login"
                       >
                         Log Out
@@ -182,7 +186,7 @@ const Footer = () => {
                   ) : (
                     <li>
                       <Link
-                        className="text-gray-700 transition hover:text-gray-700/75"
+                        className="text-gray-700  transition hover:text-gray-700/75 dark:text-gray-100"
                         to="/login"
                       >
                         Log in
@@ -191,7 +195,7 @@ const Footer = () => {
                   )}
                   <li>
                     <Link
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-gray-700  transition hover:text-gray-700/75 dark:text-gray-100"
                       to="/login"
                     >
                       Log in
@@ -199,7 +203,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-gray-700  transition hover:text-gray-700/75 dark:text-gray-100"
                       to="/"
                     >
                       Home
@@ -207,7 +211,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-gray-700  transition hover:text-gray-700/75 dark:text-gray-100"
                       to="/instructors"
                     >
                       Instructors
@@ -216,7 +220,7 @@ const Footer = () => {
 
                   <li>
                     <Link
-                      className="text-gray-700 transition hover:text-gray-700/75"
+                      className="text-gray-700  transition hover:text-gray-700/75 dark:text-gray-100"
                       to="/classes"
                     >
                       Classes
@@ -227,7 +231,9 @@ const Footer = () => {
             </div>
             {/* contact us section here  */}
             <div className="text-center sm:text-left">
-              <p className="text-lg font-medium text-gray-900">Contact Us</p>
+              <p className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                Contact Us
+              </p>
 
               <ul className="mt-8 space-y-4 text-sm">
                 <li>
@@ -237,7 +243,7 @@ const Footer = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 shrink-0 text-gray-900"
+                      className="h-5 w-5 shrink-0 text-gray-900 dark:text-gray-100"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -250,7 +256,7 @@ const Footer = () => {
                       />
                     </svg>
 
-                    <span className="flex-1 text-gray-700">
+                    <span className="flex-1 text-gray-700 dark:text-gray-100">
                       rakibulhasanbu@gmail.com
                     </span>
                   </Link>
@@ -263,7 +269,7 @@ const Footer = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 shrink-0 text-gray-900"
+                      className="h-5 w-5 shrink-0 text-gray-900 dark:text-gray-100"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -276,7 +282,7 @@ const Footer = () => {
                       />
                     </svg>
 
-                    <span className="flex-1 text-gray-700">
+                    <span className="flex-1 text-gray-700 dark:text-gray-100">
                       ++880 171368944
                     </span>
                   </Link>
@@ -285,7 +291,7 @@ const Footer = () => {
                 <li className="flex items-start justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 shrink-0 text-gray-900"
+                    className="h-5 w-5 shrink-0 text-gray-900 dark:text-gray-100"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -303,7 +309,7 @@ const Footer = () => {
                     />
                   </svg>
 
-                  <address className="-mt-0.5 flex-1 not-italic text-gray-700">
+                  <address className="-mt-0.5 flex-1 not-italic text-gray-700 dark:text-gray-100">
                     Bangla Bazaar, Barisal-8200, Bangladesh
                   </address>
                 </li>
@@ -314,7 +320,7 @@ const Footer = () => {
         {/* this is all right part of footer  */}
         <div className="mt-4 border-t-2 border-gray-100 py-4">
           <div className="text-center sm:flex sm:justify-between sm:text-left">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500 dark:text-gray-200">
               <span className="block sm:inline">All rights reserved. </span>
 
               <Link
@@ -325,7 +331,7 @@ const Footer = () => {
               </Link>
             </p>
 
-            <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">
+            <p className="mt-4 text-sm text-gray-500 dark:text-gray-200 sm:order-first sm:mt-0">
               &copy; 2023{" "}
               <span className="gradient cursor-pointer">Rakibul Hasan</span>
             </p>

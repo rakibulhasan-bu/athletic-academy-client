@@ -1,14 +1,16 @@
-import { Outlet, ScrollRestoration } from "react-router-dom";
+import { Outlet, ScrollRestoration, useLocation } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
 import Footer from "../Shared/Footer";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import NavMobile from "../Shared/NavMobile";
+import { AnimatePresence } from "framer-motion";
 
 const MainLayout = () => {
+  const location = useLocation();
   const { mobileNav } = useContext(AuthContext);
   return (
-    <>
+    <div className="dark:bg-gray-800 dark:text-gray-100">
       <Navbar />
       {/* mobile nav here  */}
       <div
@@ -18,11 +20,13 @@ const MainLayout = () => {
       >
         <NavMobile />
       </div>
-      <Outlet />
+      <AnimatePresence>
+        <Outlet location={location} key={location.pathname} />
+      </AnimatePresence>
       {/* <div className="min-h-[464px]"></div> */}
       <Footer />
       <ScrollRestoration />
-    </>
+    </div>
   );
 };
 

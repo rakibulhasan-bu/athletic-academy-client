@@ -2,7 +2,7 @@ import Lottie from "react-lottie";
 import lottieFile from "../../public/page404.json";
 import { Link } from "react-router-dom";
 const ErrorPage = () => {
-  document.title = "Error page | Toy Galaxy";
+  document.title = "Error page | Athletic Academy";
   const defaultOptions = {
     loop: true,
     autoplay: true,

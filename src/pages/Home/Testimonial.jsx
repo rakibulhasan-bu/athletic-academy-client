@@ -47,10 +47,10 @@ const Testimonial = () => {
     <>
       <div className="container mx-auto flex justify-center pt-6">
         <div>
-          <p className="pb-3 text-center text-lg font-normal text-gray-500">
+          <p className="pb-3 text-center text-lg font-normal text-gray-500 dark:text-gray-100">
             Inspiring Words from Our Students
           </p>
-          <h1 className="mx-auto w-5/6 pb-6 text-center text-3xl font-semibold text-gray-800 sm:w-4/6 xl:text-4xl">
+          <h1 className="mx-auto w-5/6 pb-6 text-center text-3xl font-semibold text-gray-800 dark:text-gray-100 sm:w-4/6 xl:text-4xl">
             See What Our Students Have to Say About Their Experience
           </h1>
         </div>

@@ -11,13 +11,13 @@ const PopularClasses = () => {
   }, []);
 
   return (
-    <div className="container mx-auto px-6 pb-6 text-gray-500 md:px-12 xl:px-0">
+    <div className="container mx-auto px-6 pb-6 text-gray-500 dark:bg-gray-800 md:px-12 xl:px-0">
       <div className="container mx-auto flex justify-center pt-16">
         <div>
-          <p className="pb-3 text-center text-lg font-normal text-gray-500">
+          <p className="pb-3 text-center text-lg font-normal text-gray-500 dark:text-gray-200">
             Top-Rated Classes
           </p>
-          <h1 className="mx-auto w-full max-w-2xl pb-6 text-center text-3xl font-semibold text-gray-800 xl:text-4xl">
+          <h1 className="mx-auto w-full max-w-2xl pb-6 text-center text-3xl font-semibold text-gray-800 dark:text-gray-100 xl:text-4xl">
             Discover Highly Recommended Classes by Our Students
           </h1>
         </div>

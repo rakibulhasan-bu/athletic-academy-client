@@ -3,7 +3,7 @@ import SingleClass from "../components/SingleClass";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { ImSpinner6 } from "react-icons/im";
-
+import { motion } from "framer-motion";
 const Classes = () => {
   const {
     data: courses = [],
@@ -32,7 +32,12 @@ const Classes = () => {
   }
 
   return (
-    <div className="container mx-auto py-20">
+    <motion.div
+      initial={{ opacity: 0, width: 0 }}
+      animate={{ opacity: 1, width: "100%" }}
+      exit={{ opacity: 0, x: window.innerWidth, transition: { duration: 0.1 } }}
+      className="container mx-auto  py-20"
+    >
       <h1 className="text-center text-3xl font-medium">
         Explore Athletic academy Classes
       </h1>
@@ -41,7 +46,7 @@ const Classes = () => {
           <SingleClass refetch={refetch} course={course} key={course._id} />
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -2,6 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { CgMenuRight } from "react-icons/cg";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import DarkMode from "../components/DarkMode";
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
   const { user, logOut, setMobileNav } = useContext(AuthContext);
@@ -24,9 +25,11 @@ const Navbar = () => {
     <div
       className={`fixed z-10 w-full ${`${
         sticky
-          ? "border-b-[1px] bg-white text-black shadow-md"
+          ? "border-b-[1px] bg-white text-black shadow-md dark:bg-gray-800 dark:text-gray-100"
           : `bg-transparent ${
-              location.pathname == "/" ? "text-white" : "text-black"
+              location.pathname == "/"
+                ? "text-white"
+                : "text-black dark:text-gray-100"
             }`
       }`}`}
     >
@@ -64,6 +67,7 @@ const Navbar = () => {
               <NavLink to="/login">Log in</NavLink>
             )}
           </div>
+          <DarkMode />
         </div>
 
         {/* these is for mobile navbar  */}

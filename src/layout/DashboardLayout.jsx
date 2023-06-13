@@ -33,8 +33,8 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="flex">
-      <div className="h-screen w-1/5 overflow-y-auto bg-gray-50 px-6 py-20 text-lg dark:bg-gray-800">
+    <div className="flex dark:bg-gray-800 dark:text-gray-100">
+      <div className="h-screen w-1/2 overflow-y-auto bg-gray-50 px-6 py-20 text-lg dark:bg-gray-800 md:w-1/5">
         {/* these is links based on user admin and instractor  */}
         <ul className="space-y-2 font-medium">
           {isStudent && (
@@ -42,7 +42,7 @@ const DashboardLayout = () => {
               <li>
                 <NavLink
                   to="/dashboard/selectedClasses"
-                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
                 >
                   <MdOutlineClass className="text-xl font-bold" />
                   <span className="ml-3 flex-1 whitespace-nowrap">
@@ -54,7 +54,7 @@ const DashboardLayout = () => {
               <li>
                 <NavLink
                   to="/dashboard/payment"
-                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
                 >
                   <BsCreditCard2Back className="text-xl font-bold" />
                   <span className="ml-3 flex-1 whitespace-nowrap">Payment</span>
@@ -63,7 +63,7 @@ const DashboardLayout = () => {
               <li>
                 <NavLink
                   to="/dashboard/enrolledClasses"
-                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
                 >
                   <SiGoogleclassroom className="text-xl font-bold" />
                   <span className="ml-3 flex-1 whitespace-nowrap">
@@ -74,7 +74,7 @@ const DashboardLayout = () => {
               <li>
                 <NavLink
                   to="/dashboard/paymentHistory"
-                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
                 >
                   <MdOutlineHistoryToggleOff className="text-2xl font-bold" />
                   <span className="ml-3 flex-1 whitespace-nowrap">
@@ -89,7 +89,7 @@ const DashboardLayout = () => {
               <li>
                 <NavLink
                   to="/dashboard/myClass"
-                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
                 >
                   <BsFillGridFill className="text-xl font-bold" />
                   <span className="ml-3 flex-1 whitespace-nowrap">
@@ -100,7 +100,7 @@ const DashboardLayout = () => {
               <li>
                 <NavLink
                   to="/dashboard/addAClass"
-                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
                 >
                   <AiOutlineVideoCameraAdd className="text-xl font-bold" />
                   <span className="ml-3 flex-1 whitespace-nowrap">
@@ -115,7 +115,7 @@ const DashboardLayout = () => {
               <li>
                 <NavLink
                   to="/dashboard/manageClasses"
-                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
                 >
                   <BsUiChecksGrid className="text-xl font-bold" />
                   <span className="ml-3 flex-1 whitespace-nowrap">
@@ -126,7 +126,7 @@ const DashboardLayout = () => {
               <li>
                 <NavLink
                   to="/dashboard/manageUsers"
-                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+                  className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
                 >
                   <HiUserGroup className="text-xl font-bold" />
                   <span className="ml-3 flex-1 whitespace-nowrap">
@@ -142,7 +142,7 @@ const DashboardLayout = () => {
           <li>
             <NavLink
               to="/"
-              className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+              className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
             >
               <AiFillHome className="text-xl font-bold" />
               <span className="ml-3 flex-1 whitespace-nowrap">Home</span>
@@ -151,7 +151,7 @@ const DashboardLayout = () => {
           <li>
             <NavLink
               to="/classes"
-              className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+              className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
             >
               <BsPersonVideo2 className="text-xl font-bold" />
               <span className="ml-3 flex-1 whitespace-nowrap">Classes</span>
@@ -160,7 +160,7 @@ const DashboardLayout = () => {
           <li>
             <NavLink
               to="/instructors"
-              className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+              className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
             >
               <BsFillPeopleFill className="text-xl font-bold" />
               <span className="ml-3 flex-1 whitespace-nowrap">Instructors</span>
@@ -170,7 +170,7 @@ const DashboardLayout = () => {
             <NavLink
               onClick={handleLogOut}
               to="/login"
-              className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary"
+              className="flex items-center rounded-lg p-2 text-gray-600 hover:bg-gray-200 hover:text-primary dark:text-gray-100 hover:dark:text-gray-600"
             >
               <AiOutlineLogout className="text-xl font-bold" />
               <span className="ml-3 flex-1 whitespace-nowrap">Log Out</span>
@@ -180,7 +180,7 @@ const DashboardLayout = () => {
       </div>
 
       {/* these is right side  */}
-      <div className="w-4/5">
+      <div className="w-1/2 md:w-4/5">
         <Outlet />
       </div>
     </div>

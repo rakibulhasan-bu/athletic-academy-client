@@ -3,7 +3,7 @@ import InstructorCard from "../components/instructorCard";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { ImSpinner6 } from "react-icons/im";
-
+import { motion } from "framer-motion";
 const Instructors = () => {
   const {
     data: instructors = [],
@@ -32,7 +32,12 @@ const Instructors = () => {
     );
   }
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <motion.section
+      initial={{ opacity: 0, width: 0 }}
+      animate={{ opacity: 1, width: "100%" }}
+      exit={{ opacity: 0, x: window.innerWidth, transition: { duration: 0.1 } }}
+      className="bg-white dark:bg-gray-900"
+    >
       <div className="container mx-auto px-4 py-20 lg:px-6 lg:py-20 ">
         <div className="mx-auto mb-8 max-w-screen-sm text-center lg:mb-8">
           <h2 className="mb-4 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -49,7 +54,7 @@ const Instructors = () => {
           })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
