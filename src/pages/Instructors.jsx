@@ -1,4 +1,3 @@
-import Swal from "sweetalert2";
 import InstructorCard from "../components/instructorCard";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -17,11 +16,11 @@ const Instructors = () => {
   });
 
   if (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: { error },
-    });
+    return (
+      <div className="flex min-h-screen items-center justify-center text-4xl font-medium text-gray-700">
+        There haven&apos;t any Instructors yet.
+      </div>
+    );
   }
 
   if (isLoading) {

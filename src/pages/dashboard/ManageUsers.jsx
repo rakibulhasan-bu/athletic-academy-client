@@ -56,11 +56,11 @@ const ManageUsers = () => {
     );
 
   if (error) {
-    return Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: `An error has occurred: ${error.message}`,
-    });
+    return (
+      <div className="flex min-h-screen items-center justify-center text-4xl font-medium text-gray-700">
+        You haven&apos;t any users yet.
+      </div>
+    );
   }
 
   return (

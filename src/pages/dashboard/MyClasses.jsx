@@ -70,11 +70,11 @@ const MyClasses = () => {
     );
   }
   if (error) {
-    return Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: `An error has occurred: ${error.message}`,
-    });
+    return (
+      <div className="flex min-h-screen items-center justify-center text-4xl font-medium text-gray-700">
+        You haven&apos;t add any classes yet.
+      </div>
+    );
   }
   return (
     <>

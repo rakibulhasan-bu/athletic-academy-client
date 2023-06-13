@@ -1,4 +1,3 @@
-import Swal from "sweetalert2";
 import SingleClass from "../components/SingleClass";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
@@ -25,11 +24,11 @@ const Classes = () => {
     );
   }
   if (error) {
-    return Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Your Request is not allowed",
-    });
+    return (
+      <div className="flex min-h-screen items-center justify-center text-4xl font-medium text-gray-700">
+        There are no Classes yet.
+      </div>
+    );
   }
 
   return (
