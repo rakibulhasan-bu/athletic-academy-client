@@ -3,15 +3,15 @@ import { RxAvatar } from "react-icons/rx";
 import Swal from "sweetalert2";
 import { MdEventAvailable, MdOutlineMail, MdPeople } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
 import { ImSpinner6 } from "react-icons/im";
 
 const SingleClass = ({ course, refetch }) => {
+  const [currentUser, setCurrentUser] = useState({});
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const {
     seats,
     students,
@@ -23,17 +23,18 @@ const SingleClass = ({ course, refetch }) => {
   } = course || {};
   const [axiosSecure] = useAxiosSecure();
 
-  const {
-    data: singleUser = {},
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["singleUser", user?.email],
-    queryFn: async () => {
-      const res = await axiosSecure(`/singleUser/${user?.email}`);
-      return res.data;
-    },
-  });
+  if (user) {
+    const token = localStorage.getItem("access-token");
+    fetch(`${import.meta.env.VITE_API_URL}/singleUser/${user?.email}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setCurrentUser(data));
+  }
 
   const handleSelectClass = async (course) => {
     if (!user) {
@@ -63,19 +64,12 @@ const SingleClass = ({ course, refetch }) => {
       });
     }
   };
-  if (isLoading) {
+  if (loading) {
     return (
       <div className="flex w-full items-center justify-center font-bold">
         <ImSpinner6 className="animate-spin text-5xl font-extrabold text-primary" />
       </div>
     );
-  }
-  if (error) {
-    return Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: `An error has occurred: ${error.message}`,
-    });
   }
   return (
     <div
@@ -112,14 +106,14 @@ const SingleClass = ({ course, refetch }) => {
         </div>
         <button
           disabled={
-            singleUser?.role === "admin" ||
-            singleUser?.role === "instructor" ||
+            currentUser?.role === "admin" ||
+            currentUser?.role === "instructor" ||
             seats === 0
           }
           onClick={() => handleSelectClass(course)}
           className={`mt-4  w-full rounded-xl px-3 py-2 text-xl font-medium shadow-lg ${
-            singleUser?.role === "admin" ||
-            singleUser?.role === "instructor" ||
+            currentUser?.role === "admin" ||
+            currentUser?.role === "instructor" ||
             seats === 0
               ? "cursor-not-allowed border-gray-500 bg-gray-300 text-gray-700"
               : "border-primary bg-primary text-white"

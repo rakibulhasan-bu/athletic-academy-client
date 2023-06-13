@@ -4,6 +4,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { ImSpinner6 } from "react-icons/im";
 import { motion } from "framer-motion";
+
 const Classes = () => {
   const {
     data: courses = [],

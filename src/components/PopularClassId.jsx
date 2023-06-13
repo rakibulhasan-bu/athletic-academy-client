@@ -47,7 +47,6 @@ const PopularClassId = ({ popularClass, refetch }) => {
     }
     const id = popularClass._id;
     const res = await axiosSecure.put(`/selectClass/${user.email}`, { id });
-    console.log(res);
     const data = res.data;
     if (data.modifiedCount > 0) {
       refetch();
