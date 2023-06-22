@@ -3,7 +3,7 @@ import { RxAvatar } from "react-icons/rx";
 import Swal from "sweetalert2";
 import { MdEventAvailable, MdOutlineMail, MdPeople } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { ImSpinner6 } from "react-icons/im";
@@ -22,18 +22,21 @@ const PopularClassId = ({ popularClass, refetch }) => {
     className,
   } = popularClass || {};
   const [axiosSecure] = useAxiosSecure();
-  if (user) {
-    const token = localStorage.getItem("access-token");
-    fetch(`${import.meta.env.VITE_API_URL}/singleUser/${user?.email}`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "content-type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setCurrentUser(data));
-  }
+
+  useEffect(() => {
+    if (user?.email) {
+      const token = localStorage.getItem("access-token");
+      fetch(`${import.meta.env.VITE_API_URL}/singleUser/${user?.email}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => setCurrentUser(data));
+    }
+  }, [user]);
 
   const handleSelectClass = async (popularClass) => {
     if (!user) {
